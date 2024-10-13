@@ -163,18 +163,18 @@ highlight {
   </h1>
 </center>
 <center>
-  <h2>
+  <h3>
     <a href="https://mingyoseo.com/">Mingyo Seo<sup>1,2</sup></a>&nbsp;&nbsp;&nbsp;
     <a href="https://www.linkedin.com/in/robodreamer/">H. Andy Park<sup>2</sup></a>&nbsp;&nbsp;&nbsp;
     <a href="https://yuanshenli.com/">Shenli Yuan<sup>2</sup></a>&nbsp;&nbsp;&nbsp;
     <a href="https://yukezhu.me/">Yuke Zhu<sup>1&dagger;</sup></a>&nbsp;&nbsp;&nbsp;
     <a href="https://www.ae.utexas.edu/people/faculty/faculty-directory/sentis/">Luis Sentis<sup>1,2&dagger;</sup></a>&nbsp;&nbsp;&nbsp; 
-  </h2>
+  </h3>
 <center>
   <h3>
     <a href="https://www.utexas.edu/"><sup>1</sup>The University of Texas at Austin</a>&nbsp;&nbsp;&nbsp;
     <a href="https://theaiinstitute.com/"><sup>2</sup>The AI Institute</a>&nbsp;&nbsp;&nbsp;
-    &dagger; Equal advising
+    <sup>&dagger;</sup> Equal advising
   </h3>
 </center>
 <center>
@@ -246,7 +246,6 @@ highlight {
     </td>
   </tr>
 </table>
-<br>
 
 <hr>
 <h1 align="center">Wearable Gripper Design</h1>
@@ -318,7 +317,6 @@ highlight {
     </td>
   </tr>
 </table>
-<br>
 
 <hr>
 <h1 align="center">Whole-body Motion retargeting</h1>
