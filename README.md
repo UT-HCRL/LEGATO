@@ -26,6 +26,11 @@ Please see [Setup](docs/setup.md) and [Usage](docs/usage.md).
 We provide our demonstration dataset in simulation environment ([link](https://utexas.box.com/s/5twb8okdnfr2uhyf4fj3bh5ohu4w3o4r)) and trained models of the Visuomotor Policies ([link](https://utexas.box.com/s/392bihmqdulcwj5aqndl2w2hohxt1rza)).
 
 
+## License
+
+LEGATO is released under the [MIT License](LICENSE). The `flex_ik` part of this code was produced as part of Mingyo Seo's internship at the Boston Dynamics AI Institute in 2023 and 2024 and is provided "as is" without active maintenance. For questions, please contact [Mingyo Seo](https://mingyoseo.com) or [H. Andy Park](https://www.linkedin.com/in/robodreamer/).
+
+
 ## Citing
 ```
 @misc{seo2024vibrato,
