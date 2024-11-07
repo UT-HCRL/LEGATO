@@ -4,16 +4,19 @@ permalink: /
 categories: projects
 ---
 
+<link media="all" href="./css/glab.css" type="text/css" rel="StyleSheet">
 <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,600,400italic,600italic,300,300italic' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>LEGATO: Cross-Embodiment Imitation Using a Grasping Tool</title>
 
 <!-- <meta property="og:image" content="src/figure/approach.png"> -->
-<meta property="og:title" content="ETUDE">
+<meta property="og:title" content="LEGATO">
 
 <script src="./src/popup.js" type="text/javascript"></script>
 <script src="/src/js/viewstl/stl_viewer.min.js"></script>
 <script src="/src/js/viewstl/init.js"></script>
+<script src="https://kit.fontawesome.com/ef67f68cfb.js" crossorigin="anonymous"></script>
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLEPNK1F3W"></script>
@@ -65,7 +68,6 @@ $(document).ready(initStlViewer);
 // redefining default features
 var _POPUP_FEATURES = 'width=500,height=300,resizable=1,scrollbars=1,titlebar=1,status=1';
 </script>
-<link media="all" href="./css/glab.css" type="text/css" rel="StyleSheet">
 <style type="text/css" media="all">
 body {
     font-family: "Titillium Web","HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -74,6 +76,12 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+  }
+.page-width-background {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-color: #e8eaf6;
   }
 h1 { 
     font-weight:300; 
@@ -84,7 +92,7 @@ h2 {
   }
 h3 {
     font-weight:300;
-}
+  }
 IMG {
     PADDING-RIGHT: 0px;
     PADDING-LEFT: 0px;
@@ -101,7 +109,7 @@ IMG {
   }
 BODY {
     TEXT-ALIGN: center
-}
+  }
 hr{
     border: 0;
     height: 1px;
@@ -125,7 +133,7 @@ pre {
   }
 table {
   	width:800
-	}
+  }
 </style>
 
 <meta content="MSHTML 6.00.2800.1400" name="GENERATOR"><script
@@ -163,24 +171,31 @@ highlight {
   </h1>
 </center>
 <center>
-  <h2>
+  <h3>
     <a href="https://mingyoseo.com/">Mingyo Seo<sup>1,2</sup></a>&nbsp;&nbsp;&nbsp;
     <a href="https://www.linkedin.com/in/robodreamer/">H. Andy Park<sup>2</sup></a>&nbsp;&nbsp;&nbsp;
     <a href="https://yuanshenli.com/">Shenli Yuan<sup>2</sup></a>&nbsp;&nbsp;&nbsp;
     <a href="https://yukezhu.me/">Yuke Zhu<sup>1&dagger;</sup></a>&nbsp;&nbsp;&nbsp;
     <a href="https://www.ae.utexas.edu/people/faculty/faculty-directory/sentis/">Luis Sentis<sup>1,2&dagger;</sup></a>&nbsp;&nbsp;&nbsp; 
-  </h2>
+  </h3>
 <center>
   <h3>
     <a href="https://www.utexas.edu/"><sup>1</sup>The University of Texas at Austin</a>&nbsp;&nbsp;&nbsp;
     <a href="https://theaiinstitute.com/"><sup>2</sup>The AI Institute</a>&nbsp;&nbsp;&nbsp;
-    &dagger; Equal advising
+    <sup>&dagger;</sup> Equal advising
   </h3>
 </center>
 <center>
-  <h2>
-    <a href="http://arxiv.org/abs/XXXX.XXXXXX">Paper</a> | <a href="https://github.com/UT-HCRL/LEGATO">Code</a> | <a href="https://judicious-study-05b.notion.site/LEGATO-Gripper-fff873a1af8380f690bef81ab1f762a7?pvs=4">Hardware</a>
-  </h2>
+  <h3>
+    <a href="http://arxiv.org/abs/2411.03682">
+      <i class="ai ai-arxiv"></i> Paper</a> | 
+    <a href="https://github.com/UT-HCRL/LEGATO">
+      <i class="fa-brands fa-github"></i> Code</a> | 
+    <a href="https://ut-hcrl.github.io/LEGATO-Gripper">
+      <i class="fa-solid fa-gear"></i> Hardware</a> |
+    <a href="./src/file/appendix.pdf" download>
+      <i class="fa-solid fa-file-pdf"></i> Appendix</a>
+  </h3>
 </center>
 
 <center>
@@ -208,13 +223,13 @@ highlight {
         <tr>
           <td>
             <p align="justify" width="20%">
-              Cross-embodiment imitation, where robots learn policies from demonstrations of these policies can be transferred to different robot embodiments, offers the potential for large-scale imitation learning that is both cost-effective and highly reusable.
-   	      This paper presents <b>LEGATO</b>, a cross-embodiment imitation learning framework for visuomotor skills, facilitating the transfer of actions across various kinematic morphologies. 
-              We introduce a wearable gripper that enables tasks to be defined within the same gripper's action and observation spaces across different robots.
-	      Based on this wearable gripper, we train visuomotor policies through imitation learning, incorporating a motion-invariant transformation to compute the training loss. 
-	      We then retarget gripper motions into high-DOF whole-body motions for deployment across diverse embodiments using inverse kinematics.
-	     Our evaluation of simulations and real-robot experiments highlights the framework’s effectiveness in learning and transferring visuomotor skills across various robots.
-	    </p>
+              Cross-embodiment imitation enables policies trained on specific embodiments to transfer across different robots, unlocking the potential for large-scale imitation learning that is both cost-effective and highly reusable. 
+              This paper presents <b>LEGATO</b>, a cross-embodiment imitation learning framework for visuomotor skill transfer across varied kinematic morphologies. 
+              We introduce a hand-held gripper that unifies action and observation spaces across robots, allowing tasks to be defined consistently. 
+              Using this gripper, we train visuomotor policies via imitation learning, applying a motion-invariant transformation to compute the training loss.
+              Gripper motions are then retargeted into high-DOF whole-body motions using inverse kinematics for deployment across diverse embodiments.
+              Our evaluations in simulation and real-robot experiments highlight the framework’s effectiveness in learning and transferring visuomotor skills across various robots.
+      	    </p>
           </td>
         </tr>
       </table>
@@ -241,12 +256,15 @@ highlight {
   <tr>
     <td>
       <p align="justify" width="20%">
-      	We introcuce a cross-embodiment imitation learning framework that enables human demonstrations via direct interaction or robot teleoperation. Our framework uses the LEGATO Gripper, a versatile wearable gripper, to maintain consistent physical interactions across different robots. During data collection, our gripper records the trajectories and grasping actions of the wearable gripper, as well as visual observations from its egocentric stereo camera. Policies trained on these gripper motions can be deployed on various robots equipped with the same gripper. Motion retargeting using IK optimization enables these trajectories to be executed on different robots without the need for training data specific to any particular robot.
+        We introcuce a cross-embodiment imitation learning framework that enables human demonstrations via direct interaction or robot teleoperation.
+        Our framework uses the LEGATO Gripper, a versatile wearable gripper, to maintain consistent physical interactions across different robots. 
+        During data collection, our gripper records the trajectories and grasping actions of the wearable gripper, as well as visual observations from its egocentric stereo camera. 
+        Policies trained from demonstrations by humans or teleoperated robots using the tool can be deployed across various robots equipped with the same gripper. 
+        Motion retargeting enables these trajectories to be executed on different robots without requiring robot-specific training data.
       </p>
     </td>
   </tr>
 </table>
-<br>
 
 <hr>
 <h1 align="center">Wearable Gripper Design</h1>
@@ -284,8 +302,7 @@ highlight {
     <td> 
       <p align="justify" width="20%">
         The LEGATO Gripper is designed for both collecting human demonstrations and robot deployment.
-        Its design features a shared actuated gripper with handles adapted to each embodiment, ensuring robust human handling. 
-        This ensures consistent grasping actions while minimizing the number of parts necessary for direct human use and deployment across various robots.
+        It features a shared actuated gripper with adaptable handles, ensuring reliable human handling and consistent grasping across robots while minimizing parts.
       </p>
     </td>
   </tr>
@@ -312,13 +329,12 @@ highlight {
   <tr>
     <td> 
       <p align="justify" width="20%">
-        The LEGATO Gripper allows a human demonstrator to directly perform tasks by carrying it, using a simple button interface. 
-        It is also designed to be easily installed on various robot systems by simply holding it with their original grippers.
+        A human demonstrator can directly perform tasks using the the LEGATO Gripper by carrying it. 
+        The LEGATO Gripper is easily installable on various robots, held securely by their original grippers, and is ready for immediate use.
       </p>
     </td>
   </tr>
 </table>
-<br>
 
 <hr>
 <h1 align="center">Whole-body Motion retargeting</h1>
@@ -347,17 +363,40 @@ highlight {
 
 <hr>
 <h1 align="center">Real-robot Deployment</h1>
+<table align=center width=800px>
+  <tr>
+    <td> 
+      <p align="justify" width="20%">
+        We trained visuomotor policies on direct human demonstrations and successfully deployed them on the <i>Panda</i> robot system. Our method succeeded in 16 trials of the <i>Closing the lid</i> task, 13 trials of the <i>Cup shelving</i> task, and 14 trials of the <i>Ladle reorganization</i> task, respectively.
+      </p>
+    </td>
+  </tr>
+</table>
 
 <table border="0" cellspacing="10" cellpadding="0" align="center">
   <tbody>
     <tr>
       <td align="center" valign="middle">
-        <video class="lazy-video" muted loop width="798">
-          <source src="./src/video/real_panda.mp4"  type="video/mp4">
+        <video class="lazy-video" muted loop  width="598">
+          <source src="./src/video/real_lid.mp4"  type="video/mp4">
         </video>
       </td>
-    </tr> 
-  </tbody> 
+    </tr>
+    <tr>
+      <td align="center" valign="middle">
+        <video class="lazy-video" muted loop  width="598">
+          <source src="./src/video/real_ladle.mp4"  type="video/mp4">
+        </video>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" valign="middle">
+        <video class="lazy-video" muted loop  width="598">
+          <source src="./src/video/real_cup.mp4"  type="video/mp4">
+        </video>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 <hr>
@@ -398,14 +437,14 @@ highlight {
     <tr>
       <td align="center" valign="middle">
         <video class="lazy-video" muted loop width="598">
-          <source src="./src/video/sim_cup.mp4"  type="video/mp4">
+          <source src="./src/video/sim_ladle.mp4"  type="video/mp4">
         </video>
       </td>
     </tr>
     <tr>
       <td align="center" valign="middle">
         <video class="lazy-video" muted loop width="598">
-          <source src="./src/video/sim_ladle.mp4"  type="video/mp4">
+          <source src="./src/video/sim_cup.mp4"  type="video/mp4">
         </video>
       </td>
     </tr>
@@ -434,3 +473,18 @@ highlight {
     </td>
   </tr>
 </table>
+
+<div class="page-width-background">
+<div style="height: 4px;"></div>
+<center><h2 align="center">Acknowledgement</h2></center>
+<table align=center width=800px>
+  <tr>
+    <td> 
+      <p align="justify" width="20%">
+        This work was conducted during Mingyo Seo's internship at the AI Institute. We thank Rutav Shah and Minkyung Kim for providing feedback on this manuscript. We thank Dr. Osman Dogan Yirmibesoglu for designing the fin ray style compliant fingers and helping with hardware prototyping. We thank Mitchell Pryor and Fabian Parra for their support with the real Spot demonstration. We acknowledge the support of the AI Institute and the Office of Naval Research (N00014-22-1-2204).
+      </p>
+    </td>
+  </tr>
+</table>
+<div style="height: 16px;"></div>
+</div>
