@@ -464,7 +464,7 @@ highlight {
         author={Seo, Mingyo and Park, H. Andy and Yuan, Shenli and Zhu, Yuke and
           and Sentis, Luis},
         year={2024}
-        eprint={XXXX.XXXXXX},
+        eprint={2411.03682},
         archivePrefix={arXiv},
         primaryClass={cs.RO}
       }
