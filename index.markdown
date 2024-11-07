@@ -223,11 +223,11 @@ highlight {
         <tr>
           <td>
             <p align="justify" width="20%">
-              Cross-embodiment imitation enables policies trained on specific embodiments to transfer across different robots, unlocking the potential for large-scale imitation learning that is both cost-effective and highly reusable. 
+              Cross-embodiment imitation learning enables policies trained on specific embodiments to transfer across different robots, unlocking the potential for large-scale imitation learning that is both cost-effective and highly reusable. 
               This paper presents <b>LEGATO</b>, a cross-embodiment imitation learning framework for visuomotor skill transfer across varied kinematic morphologies. 
-              We introduce a hand-held gripper that unifies action and observation spaces across robots, allowing tasks to be defined consistently. 
+              We introduce a handheld gripper that unifies action and observation spaces, allowing tasks to be defined consistently across robots. 
               Using this gripper, we train visuomotor policies via imitation learning, applying a motion-invariant transformation to compute the training loss.
-              Gripper motions are then retargeted into high-DOF whole-body motions using inverse kinematics for deployment across diverse embodiments.
+              Gripper motions are then retargeted into high-degree-of-freedom whole-body motions using inverse kinematics for deployment across diverse embodiments.
               Our evaluations in simulation and real-robot experiments highlight the framework’s effectiveness in learning and transferring visuomotor skills across various robots.
       	    </p>
           </td>
