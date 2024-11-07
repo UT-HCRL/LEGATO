@@ -385,14 +385,14 @@ highlight {
     <tr>
       <td align="center" valign="middle">
         <video class="lazy-video" muted loop  width="598">
-          <source src="./src/video/real_ladle.mp4"  type="video/mp4">
+          <source src="./src/video/real_cup.mp4"  type="video/mp4">
         </video>
       </td>
     </tr>
     <tr>
       <td align="center" valign="middle">
         <video class="lazy-video" muted loop  width="598">
-          <source src="./src/video/real_cup.mp4"  type="video/mp4">
+          <source src="./src/video/real_ladle.mp4"  type="video/mp4">
         </video>
       </td>
     </tr>
@@ -437,14 +437,14 @@ highlight {
     <tr>
       <td align="center" valign="middle">
         <video class="lazy-video" muted loop width="598">
-          <source src="./src/video/sim_ladle.mp4"  type="video/mp4">
+          <source src="./src/video/sim_cup.mp4"  type="video/mp4">
         </video>
       </td>
     </tr>
     <tr>
       <td align="center" valign="middle">
         <video class="lazy-video" muted loop width="598">
-          <source src="./src/video/sim_cup.mp4"  type="video/mp4">
+          <source src="./src/video/sim_ladle.mp4"  type="video/mp4">
         </video>
       </td>
     </tr>
