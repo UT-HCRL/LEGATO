@@ -26,10 +26,6 @@ Please see [Setup](docs/setup.md) and [Usage](docs/usage.md).
 We provide our demonstration dataset in simulation environment ([link](https://utexas.box.com/s/5twb8okdnfr2uhyf4fj3bh5ohu4w3o4r)) and trained models of the Visuomotor Policies ([link](https://utexas.box.com/s/392bihmqdulcwj5aqndl2w2hohxt1rza)).
 
 
-## Implementation Details
-Please see [this page](docs/implementation.md) for detailed information on our implementation, including the whole-body controller, model architecture, and teleoperation system.
-
-
 ## Citing
 ```
 @misc{seo2024vibrato,
