@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mujoco model="shelf">
+    <asset>
+        <texture file="../textures/light-wood.png" type="cube" name="light-wood" />
+        <material name="MatLightWood" texture="light-wood" texrepeat="3 3" specular="0.4" shininess="0.1" />
+    </asset>
+
+    <worldbody>
+        <body>
+            <body name="object" pos="0 0 0.5">
+                <!-- Base -->
+                <geom 
+                    type="box" size="0.25 0.15 0.02" 
+                    pos="0 0 -0.48" 
+                    material="MatLightWood"
+                    group="0"
+                    />
+                <!-- Top -->
+                <geom 
+                    type="box" size="0.25 0.15 0.02" 
+                    pos="0 0 0.48" 
+                    material="MatLightWood"
+                    group="0"
+                    />
+                <!-- Middle Shelves: Adjust the pos z-value for each shelf's vertical position -->
+                <geom 
+                    type="box" size="0.25 0.15 0.01" 
+                    pos="0 0 -0.15" 
+                    material="MatLightWood"
+                    group="0"
+                    />
+                <geom 
+                    type="box" size="0.25 0.15 0.01" 
+                    pos="0 0 0.15" 
+                    material="MatLightWood"
+                    group="0"
+                    />
+                <!-- Sides -->
+                <geom 
+                    type="box" size="0.02 0.15 0.5" 
+                    pos="-0.23 0 0" 
+                    material="MatLightWood"
+                    group="0"
+                    />
+                <geom 
+                    type="box" size="0.02 0.15 0.5" 
+                    pos="0.23 0 0" 
+                    material="MatLightWood"
+                    group="0"
+                    />
+                <!-- Back -->
+                <geom 
+                    type="box" size="0.25 0.02 0.5" 
+                    pos="0 -0.165 0" 
+                    material="MatLightWood"
+                    group="0"
+                    />
+            </body>
+            <site name="bottom_site" pos="0 0 -0.0207" rgba="0 0 0 0" size="0.005"/>
+            <site name="top_site" pos="0 0 0.007" rgba="0 0 0 0" size="0.005"/>
+            <site name="horizontal_radius_site" pos="0 0 0" rgba="0 0 0 0" size="0.003"/>
+        </body>
+
+    </worldbody>
+</mujoco>

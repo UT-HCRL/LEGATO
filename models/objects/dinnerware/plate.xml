@@ -1,0 +1,52 @@
+<mujoco model="plate">
+    <asset>
+        <mesh name="plate_viz_mesh"   file="./plate.obj"/>
+        <mesh name="plate_col_1_mesh" file="./plate-collision01.obj"/>
+        <mesh name="plate_col_2_mesh" file="./plate-collision02.obj"/>
+        <mesh name="plate_col_3_mesh" file="./plate-collision03.obj"/>
+        <mesh name="plate_col_4_mesh" file="./plate-collision04.obj"/>
+        <mesh name="plate_col_5_mesh" file="./plate-collision05.obj"/>
+        <mesh name="plate_col_6_mesh" file="./plate-collision06.obj"/>
+    </asset>
+
+    <worldbody>
+        <body>
+            <body name="object">
+                <geom name="plate_viz" mesh="plate_viz_mesh" type="mesh"
+                    group="1" contype="0" conaffinity="0"
+                    />
+                <geom name="bottom_col"
+                    type="cylinder" size="0.05 0.0025"
+                    pos="0 0 0.0025"
+                    group="0" rgba="0 0 0 0"
+                    />
+                <geom name="plate_1_col" 
+                    type="mesh" mesh="plate_col_1_mesh"
+                    group="0" rgba="0 0 0 0"
+                    />
+                <geom name="plate_2_col" 
+                    type="mesh" mesh="plate_col_2_mesh"
+                    group="0" rgba="0 0 0 0"
+                    />
+                <geom name="plate_3_col" 
+                    type="mesh" mesh="plate_col_3_mesh"
+                    group="0" rgba="0 0 0 0"
+                    />
+                <geom name="plate_4_col" 
+                    type="mesh" mesh="plate_col_4_mesh"
+                    group="0" rgba="0 0 0 0"
+                    />
+                <geom name="plate_5_col" 
+                    type="mesh" mesh="plate_col_5_mesh"
+                    group="0" rgba="0 0 0 0"
+                    />
+                <geom name="plate_6_col" 
+                    type="mesh" mesh="plate_col_6_mesh"
+                    group="0" rgba="0 0 0 0"
+                    />
+                <inertial mass="0.5" pos="0 0 0" diaginertia="0.005 0.005 0.0072"/>
+            </body>
+        </body>
+    </worldbody>
+
+</mujoco>

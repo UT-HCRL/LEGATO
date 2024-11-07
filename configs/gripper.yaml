@@ -1,0 +1,37 @@
+# Andy Park
+# Gripper Params table
+
+# !vars
+offsets:
+  - &_EXAMPLE 0
+
+# !main
+system:
+  PORTNAME: '/dev/ttyUSB0'
+  BAUDRATE: 1000000
+  PROTOCOL_VERSION: 2.0 #This should be the same for all dynamixel motors we are interested in
+  ROBOT_NAME: "Dynamixel ARM"
+  RECALIBRATE: False #this sets the startup position to the calibration_enc value if you want to do that
+
+  ANGLE_STANDARD: DEGREE #radians to be supported in future versions, maybe, if Andy isn't lazy
+
+actuator:
+  XM430:
+    counter_per_range: 4096
+    range_deg: 360.0
+
+gripper:
+  finger_left:
+    id: 1
+    series: XM430
+    torque_limit: 0.1
+    velocity_limit: 0.05
+    positive_direction: "CCW"
+    calibration_enc: 0
+  finger_right:
+    id: 2
+    series: XM430
+    torque_limit: 0.1
+    velocity_limit: 0.05
+    positive_direction: "CCW"
+    calibration_enc: 0
