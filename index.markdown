@@ -337,7 +337,7 @@ highlight {
 </table>
 
 <hr>
-<h1 align="center">Whole-body Motion retargeting</h1>
+<h1 align="center">Whole-body Motion Retargeting</h1>
 
 <table border="0" cellspacing="10" cellpadding="0" align="center">
   <tbody>
