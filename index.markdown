@@ -238,7 +238,7 @@ highlight {
 </p>
 
 <hr>
-<h1 align="center">Cross-embodiment Learning Pipeline</h1>
+<h1 align="center">Cross-Embodiment Learning Pipeline</h1>
 
 <table border="0" cellspacing="10" cellpadding="0" align="center">
   <tbody>
@@ -362,7 +362,7 @@ highlight {
 </table>
 
 <hr>
-<h1 align="center">Real-robot Deployment</h1>
+<h1 align="center">Real-Robot Deployment</h1>
 <table align=center width=800px>
   <tr>
     <td> 
