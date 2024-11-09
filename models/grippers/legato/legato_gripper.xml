@@ -1,0 +1,271 @@
+<mujoco model="legato_gripper">
+
+  <actuator>
+      <motor ctrllimited="true" ctrlrange="-20 20" joint="joint_left_driver" gear="1" name="torque_left_drive"/>
+      <motor ctrllimited="true" ctrlrange="-20 20" joint="joint_right_driver" gear="1" name="torque_right_drive"/>
+  </actuator>
+
+  <asset>
+    <material name="metal" rgba="0.58 0.58 0.58 1"/>
+    <material name="black" rgba="0.149 0.149 0.149 1"/>        
+    <material name="gray" rgba="0.4627 0.4627 0.4627 1"/>
+    <material name="white" rgba="0.9 0.9 0.9 1"/>
+    <material name="yellow" rgba="0.75 0.75 0 1"/>
+    <material name="blue" rgba="0 0 1 1"/>
+    <material name="tool_mount" rgba="0.9 0.9 0.9 0.5"/>
+    <material name="silicone" rgba="0.1882 0.1882 0.1882 1"/>
+
+    <mesh name="mesh_base" file="meshes/base.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="mesh_camera" file="meshes/t265.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="mesh_link_upper" file="meshes/link_upper.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="mesh_link_lower" file="meshes/link_lower.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="mesh_link_finger" file="meshes/link_finger.stl" scale="0.001 0.001 0.001"/>
+    <mesh name="mesh_finger_tip" file="meshes/finger_tip.stl" scale="0.001 0.001 0.001"/>
+  </asset>
+
+  <worldbody>
+    <body name="base" pos="0 0 0.04">
+      <geom name="geom_mount_1_viz" 
+        type="cylinder" size="0.03 0.02"
+        pos="0 0 -0.02" quat="0.7071068 0 0 0.7071068"
+        group="1" contype="0" conaffinity="0"
+        material="tool_mount"
+        />
+      <geom name="geom_mount_2_viz" 
+        type="sphere" size="0.04"
+        pos="0 0 -0.04"
+        group="1" contype="0" conaffinity="0"
+        material="tool_mount"
+        />
+      <geom name="geom_base_viz" 
+        type="mesh" mesh="mesh_base"
+        quat="0.7071068 0 0 0.7071068"
+        group="1" contype="0" conaffinity="0"
+        material="black"
+        />
+      <geom name="geom_camera_viz" 
+        type="mesh" mesh="mesh_camera"
+        pos="0.0091 0.0525 0.018" quat="0 0.707 0 0.707"
+        group="1" contype="0" conaffinity="0"
+        material="white"
+        />
+      <geom name="geom_base_1_col" 
+        type="cylinder" pos="0 0 0.01" size="0.05 0.01"
+        />
+      <geom name="geom_base_2_col" 
+        type="box" pos="0 0 0.045" size="0.043 0.02 0.035"
+        />
+        <!-- type="box" pos="0 0 0.038" size="0.043 0.02 0.028" -->
+      <inertial 
+        mass="163.98e-03" fullinertia="147.87942e-06 178.14255e-06 224.8969e-06 -12.24474e-06 -3.40457e-06 42.8782e-06" 
+        pos="0.00187 0.0124 0.033"
+        />
+      <body name="camera_point" pos="0 0.0525 0.02" quat="1 0 0 0">
+          <camera mode="fixed" name="stereo_l_right_hand" pos="0.032 0.0 0.0" quat="0 1 0 0" fovy="120"/>
+          <camera mode="fixed" name="stereo_r_right_hand" pos="-0.032 0.0 0.0" quat="0 1 0 0" fovy="120"/>
+      </body>
+
+    <body name="left_link_lower" pos="0.02975  0 0.05325">
+      <joint name="joint_left_driver"
+        axis="0 1 0"
+        limited="true" range="0 1.5708"
+        frictionloss="0.4" damping="0.2"
+        />
+      <geom name="geom_left_link_lower_viz" 
+        type="mesh" mesh="mesh_link_lower"
+        quat="0.5 0.5 0.5 0.5"
+        group="1" contype="0" conaffinity="0"
+        material="gray"
+        />
+      <geom name="geom_left_link_lower_col" 
+        type="box" pos="-0.015 0 0.045" size="0.022 0.014 0.035"
+        />
+      <inertial 
+        mass="9.37e-03" diaginertia="5.82620e-9 4.47730e-9 2.00989e-9" 
+        pos="0 0 0.03796"
+        />
+
+    <body name="left_link_finger" pos="0 0 0.08">
+      <joint name="joint_left_finger"
+        limited="true" range="-1.5708 0"
+        axis="0 1 0"
+        />
+      <geom name="geom_left_link_finger_viz" 
+        type="mesh" mesh="mesh_link_finger"
+        quat="0.707 0 0 -0.707"
+        group="1" contype="0" conaffinity="0"
+        material="black"
+        />
+      <geom name="geom_left_finger_tip_viz" 
+        type="mesh" mesh="mesh_finger_tip"
+        pos="-0.03131 0 0.0534" quat="0.707 0.707 0 0"
+        group="1" contype="0" conaffinity="0"
+        material="yellow"
+        />
+      <geom name="geom_left_finger_pad_viz" 
+        type="box" pos="-0.033 0 0.11" size="0.0015 0.01 0.0525"
+        group="1" contype="0" conaffinity="0"
+        material="black"
+        />
+      <geom name="geom_left_finger_tip_col" 
+        type="box" pos="-0.022  0 0.11" size="0.008 0.01 0.0525"
+        />
+      <geom name="geom_left_link_finger_col" 
+        type="box" pos="-0.01 0 0.027" size="0.02 0.01 0.027"
+        />
+      <geom name="geom_left_finger_pad_col" 
+        type="box" pos="-0.033 0 0.11" size="0.0015 0.01 0.0525"
+        friction="0.7" 
+        solimp="0.95 0.99 0.001" solref="0.004 1" priority="1"
+        group="0"
+        />
+
+      <inertial 
+        mass="25.2e-03" fullinertia="4.64387e-06 44.32392e-06  42.72353e-06 0 7.13596e-06 0" 
+        pos="0.01598 0 0.6940"
+        />
+
+    <body name="left_coupler" pos="-0.021 0 0.021" >
+      <joint name="joint_left_coupler"
+        axis="0 1 0"
+        />
+      <inertial 
+        mass="5.0e-02" diaginertia="1.0e-09 1.0e-09 1.0e-09" 
+        pos="0 0 0"
+        />
+    </body>
+    </body>
+    </body>
+
+    <body name="left_link_upper" pos="0.00875 0 0.07425">
+      <joint name="joint_left_passive"
+        limited="true" range="0 1.5708"
+        axis="0 1 0"
+        />
+      <geom name="geom_left_link_upper_viz" 
+        type="mesh" mesh="mesh_link_upper"
+        quat="0.5 0.5 0.5 0.5"
+        group="1" contype="0" conaffinity="0"
+        material="gray"
+        />
+      <inertial 
+        mass="7.88e-03" diaginertia="3.61108e-09 4.01711e-09 0.74967e-09" 
+        pos="0 0 0.0404"
+        />
+    </body>
+
+    <body name="right_link_lower" pos="-0.02975 0 0.05325">
+      <joint name="joint_right_driver"
+        axis="0 1 0"
+        limited="true" range="-1.5708 0"
+        frictionloss="0.4" damping="0.2"
+        />
+      <geom name="geom_right_link_lower_viz" 
+        type="mesh" mesh="mesh_link_lower"
+        quat="-0.5 -0.5 0.5 0.5"
+        group="1" contype="0" conaffinity="0"
+        material="gray"
+        />
+      <geom name="geom_right_link_lower_col" 
+        type="box" pos="0.015 0 0.045" size="0.022 0.014 0.035"
+        />
+      <inertial 
+        mass="9.37e-03" diaginertia="5.82620e-09 4.47730e-09 2.00989e-09" 
+        pos="0 0 0.03796"
+        />
+
+    <body name="right_link_finger" pos="0 0 0.08">
+      <joint name="joint_right_finger"
+        axis="0 1 0"
+        limited="true" range="0 1.5708"
+        />
+      <geom name="geom_right_link_finger_viz"
+        type="mesh" mesh="mesh_link_finger"
+        quat="0.707 0 0 0.707"
+        group="1" contype="0" conaffinity="0"
+        material="black"
+        />
+      <geom name="geom_right_finger_tip_viz" 
+        type="mesh" mesh="mesh_finger_tip"
+        pos="0.03131 0 0.0534"
+        quat="0 0 0.707 0.707"
+        group="1" contype="0" conaffinity="0"
+        material="yellow"
+        />
+      <geom name="geom_right_finger_pad_viz" 
+        type="box" pos="0.033 0 0.11" size="0.0015 0.01 0.0525"
+        group="1" contype="0" conaffinity="0"
+        material="black"
+        />
+      <geom name="geom_right_finger_tip_col" 
+        type="box" pos="0.022 0 0.11" size="0.008 0.01 0.0525"
+        />
+      <geom name="geom_right_link_finger_col" 
+        type="box" pos="0.01 0 0.027" size="0.02 0.01 0.027"
+        />
+      <geom name="geom_right_finger_pad_col" 
+        type="box" pos="0.033 0 0.11" size="0.0015 0.01 0.0525"
+        friction="0.7" 
+        solimp="0.95 0.99 0.001" solref="0.004 1" priority="1"
+        group="0"
+        />
+
+      <inertial 
+        mass="25.2e-03" fullinertia="4.64387e-06 44.32392e-06  42.72353e-06 0 -7.13596e-06 0" 
+        pos="-0.01598 0 0.6940"
+        />
+
+    <body name="right_coupler" pos="0.021 0 0.021" >
+      <joint name="joint_right_coupler"
+        axis="0 1 0"
+        />
+      <inertial 
+        mass="5.0e-02" diaginertia="1.0e-09 1.0e-09 1.0e-09" 
+        pos="0 0 0"
+        />
+    </body>
+    </body>
+    </body>
+
+    <body name="right_link_upper" pos="-0.00875 0 0.07425">
+      <joint name="joint_right_passive"
+        axis="0 1 0"
+        limited="true" range="-1.5708 0"
+        />
+      <geom name="geom_right_upper_viz" 
+        type="mesh" mesh="mesh_link_upper"
+        quat="-0.5 -0.5 0.5 0.5"
+        group="1" contype="0" conaffinity="0"
+        material="gray"
+        />
+      <inertial 
+        mass="7.88e-03" diaginertia="5.82620e-09 4.47730e-09 2.00989e-09" 
+        pos="0 0 0.03796"
+        />
+    </body>
+
+    <body name="eef" pos="0 0 0.13" quat="1 0 0 0">
+    </body>
+
+  </body>
+
+  </worldbody>
+
+  <equality>
+    <connect body1="right_link_upper" body2="right_coupler"
+      anchor="0 0 0.08"
+      solimp="0.95 0.99 0.001" solref="0.005 1"
+      active="true"
+      />
+    <connect body1="left_link_upper" body2="left_coupler"
+      anchor="0 0 0.08"
+      solimp="0.95 0.99 0.001" solref="0.005 1"
+      active="true"
+      />
+    <joint joint1="joint_right_driver" joint2="joint_right_finger" polycoef="0 -1 0 0 0"
+        solimp="0.95 0.99 0.001" solref="0.005 1"/>
+    <joint joint1="joint_left_driver" joint2="joint_left_finger" polycoef="0 -1 0 0 0"
+        solimp="0.95 0.99 0.001" solref="0.005 1"/>
+  </equality>
+
+</mujoco>
