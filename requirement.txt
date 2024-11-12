@@ -24,3 +24,5 @@ gym
 juliacall
 dynamixel_sdk
 ipython
+pynput
+pyrealsense2==2.53.1.4623

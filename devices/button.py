@@ -2,7 +2,7 @@ from pynput import keyboard
 import time
 
 
-class FobButton():
+class DemoButton():
 
     def __init__(self,
                  time_sensitivity=0.2,
@@ -31,7 +31,6 @@ class FobButton():
                                         )
         self.thread.start()
 
-
     def _reset_internal_state(self):
         """
         Resets internal state of controller, except for the reset signal.
@@ -42,7 +41,6 @@ class FobButton():
         self._flag_init = False
         self._t_last_click = - 1
         self._t_click = - 1
-
 
     def _on_press(self, key):
 
@@ -66,7 +64,6 @@ class FobButton():
             self._stop = True
             self._reset_state = 0
             self._enabled = False
-
 
     def _on_release(self, key):
 
@@ -107,7 +104,6 @@ class FobButton():
                 self._reset_internal_state()
                 print('Start recording')
 
-
     def _reset_internal_state(self):
         """
         Resets internal state of controller, except for the reset signal.
@@ -117,7 +113,6 @@ class FobButton():
         self._double_click = False
         self._toggle = False
         self._save = False
-
 
     @property
     def click(self):
@@ -131,17 +126,55 @@ class FobButton():
         else:
             return self._click_and_hold
 
-
     @property
     def enable(self):
         return self._enabled
-
 
     @property
     def save(self):
         return self._save
 
-
     @property
     def stop(self):
         return self._stop
+
+class DemoButtonTest(DemoButton):
+
+    def _on_release(self, key):
+
+        try:
+            key_char = key.char
+        except AttributeError:
+            key_char = str(key)
+
+        if key_char == "a":
+            if self._mode == "toggle":
+                self._toggle = not self._toggle
+            else:
+                self._click_and_hold = False
+                self._double_click = False
+
+            if self.click:
+                print("Closing the gripper")
+            else:
+                print("Releasing the gripper")
+
+        if self._enabled:
+
+            if key_char == "s":
+                self._reset_state = 0
+                self._enabled = False
+                self._save = True
+                print('Recording successful')
+
+            elif key_char == 'd':
+                self._reset_state = 0
+                self._enabled = False
+                print('Discard recording')
+
+        else:
+            if key_char == 'b':
+                self._reset_state = 1
+                self._enabled = True
+                self._reset_internal_state()
+                print('Start recording')
