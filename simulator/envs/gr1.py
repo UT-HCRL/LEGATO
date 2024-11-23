@@ -1,7 +1,7 @@
 import numpy as np
 from .base import BaseEnvConfig
 from ..ik_solver import BaseIKConfig
-from ..mp_solver import BaseMPConfig
+
 
 DEFAULT_POS = (-0.1, 0.0, 0.0)
 DEFAULT_HEIGHT = 0.88
@@ -395,24 +395,6 @@ class GR1EnvConfig(BaseEnvConfig):
     @property
     def all_joint_names(self):
         return self.JOINT_MAP[self.ROBOT_CONFIG["humanoid"]["type"]]["joint"]
-
-
-class GR1MPConfig(BaseMPConfig):
-    
-    TIME_STEP = GR1EnvConfig.TELEOP_TIME
-
-    ALGORITHM = "rrt_connect"
-
-    NUM_RETRIES = 5
-    MAX_RUNTIME = 20.0
-    SMOOTHING = True
-
-    ROBOT_NAME = "humanoid"
-    CONTROLLABLE_JOINTS = list(GR1EnvConfig.CONTROL_CONFIG["right_arm_joint"]["init_state"].keys())\
-        + list(GR1EnvConfig.CONTROL_CONFIG["left_arm_joint"]["init_state"].keys())\
-        + list(GR1EnvConfig.CONTROL_CONFIG["waist_joint"]["init_state"].keys())\
-        + list(GR1EnvConfig.CONTROL_CONFIG["head_joint"]["init_state"].keys())
-
 
 
 class GR1IKConfig(BaseIKConfig):

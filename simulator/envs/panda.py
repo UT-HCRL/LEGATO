@@ -1,7 +1,7 @@
 import numpy as np
 from .base import BaseEnvConfig
 from ..ik_solver import BaseIKConfig
-from ..mp_solver import BaseMPConfig
+
 
 class PandaEnvConfig(BaseEnvConfig):
 
@@ -124,20 +124,6 @@ class PandaEnvConfig(BaseEnvConfig):
             },
         },
     }
-
-
-class PandaMPConfig(BaseMPConfig):
-    
-    ROBOT_NAME = "arm"
-    CONTROLLABLE_JOINTS = list(PandaEnvConfig.CONTROL_CONFIG["arm_joint"]["init_state"].keys())
-
-    TIME_STEP = PandaEnvConfig.TELEOP_TIME
-
-    ALGORITHM = "rrt_connect"
-
-    NUM_RETRIES = 5
-    MAX_RUNTIME = 8.0
-    SMOOTHING = True
 
 
 class PandaIKConfig(BaseIKConfig):
