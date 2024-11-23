@@ -1,4 +1,4 @@
-from simulator.envs import EmptyEnv, KitchenEnv, Kitchen2Env, Kitchen3Env
+from simulator.envs import EmptyEnv, LidEnv, CupEnv, LadleEnv
 from simulator.envs.google import GoogleEnvConfig, GoogleIKConfig
 from simulator.envs.spot import SpotEnvConfig, SpotIKConfig
 from simulator.envs.panda import PandaEnvConfig, PandaIKConfig
@@ -10,9 +10,9 @@ from simulator.ik_solver import QuadrupedalArmIKSolver, ArmIKSolver, WholeBodyIK
 
 
 ENVS = {
-    'lid': KitchenEnv,
-    'ladle': Kitchen2Env,
-    'cup': Kitchen3Env,
+    'lid': LidEnv,
+    'ladle': CupEnv,
+    'cup': LadleEnv,
 }
 
 
