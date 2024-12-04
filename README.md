@@ -1,4 +1,4 @@
-# LEGATO: Cross-Embodiment Visual Imitation for Whole-Body Manipulation using a Wearable Gripper
+# LEGATO: Cross-Embodiment Imitation Using a Grasping Tool
 [Mingyo Seo](https://mingyoseo.com), [H. Andy Park](https://www.linkedin.com/in/robodreamer/), [Shenli Yuan](https://yuanshenli.com), [Yuke Zhu](https://yukezhu.me/)&dagger;, [Luis Sentis](https://sites.google.com/view/lsentis)&dagger;
 
 [Project](https://ut-hcrl.github.io/LEGATO) | [arXiv](https://arxiv.org/abs/2411.03682)
