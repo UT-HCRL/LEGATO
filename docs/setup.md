@@ -9,6 +9,31 @@ pip install -r requirement.txt
 ```
 Then, set up the colors of collision meshes transparent in [these lines](https://github.com/ARISE-Initiative/robosuite/blob/eb01e1ffa46f1af0a3aa3ac363d5e63097a6cbcc/robosuite/utils/mjcf_utils.py#L18C39-L18C39) at `<robosuite-home>/utils/mjcf_utils.py`.
 
+## RealSense Driver Installation for Demo Collection
+Your machine must have the [Intel Realsense driver](https://github.com/IntelRealSense/librealsense) installed to use a RealSense T265 camera as a demo collection device. From 2.54.X, the codes for T265 are removed, so we need to use the version release v2.53.1 or lower. You can use the below commands for installing the Realsense driver.
+```bash
+# Dependencies for the Realsense driver
+apt-get install libusb-1.0-0-dev xorg-dev libglu1-mesa-dev libglfw3 libglfw3-dev
+# Cloning the source code of the Realsense driver
+git clone https://github.com/IntelRealSense/librealsense.git DIR_TO_LIBREALSENSE
+cd DIR_TO_LIBREALSENSE
+# Specifying the driver version
+git checkout v2.53.1
+# Setting up authorizing USB devices (You may need "sudo" commands.) 
+cp config/99-realsense-libusb.rules /etc/udev/rules.d/
+# Building the driver
+mkdir build && cd build
+cmake -D BUILD_EXAMPLES=true -D BUILD_GRAPHICAL_EXAMPLES=false -D BUILD_PYTHON_BINDINGS=true -D PYTHON_EXECUTABLE=FILEPATH_TO_PYTHON ../
+make -j NUMBER_OF_PROCESSES
+# Installation (You may need "sudo" commands.)
+make install
+```
+
+Prior to running your devices, make sure your machine allow a local user to access the device. You can use the below command at the Realsense driver source code.
+```
+sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
+```
+
 ## Julia Installation for IK acceleration
 The IK optimizer implemented in this project can be accelerated using Julia. If you need IK acceleration, install Julia with the following command.
 ```

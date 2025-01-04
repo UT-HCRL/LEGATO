@@ -15,8 +15,8 @@ robomimic==0.3.0
 ipdb
 wandb==0.15.0
 pyzmq
-robosuite
-mujoco
+robosuite==1.4.1
+mujoco==3.1.3
 pin
 spatialmath-python
 spdlog

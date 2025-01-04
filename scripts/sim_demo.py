@@ -214,7 +214,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--gui", type=int, default=1, help="")
-    parser.add_argument("--robot", type=str, default='demo', help="")
+    parser.add_argument("--robot", type=str, default='abstract', help="")
     parser.add_argument('--gripper_tool', type=int, default=1)
     parser.add_argument('--task', type=str, default='ladle')
     parser.add_argument('--path', type=str, default='./data/lid')

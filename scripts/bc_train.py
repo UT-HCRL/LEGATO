@@ -101,7 +101,7 @@ def train(config, device, info, ckpt_path=None):
 
     # Configure meta data
     env_meta = {
-        "env_name": "quadruped-nav",
+        "env_name": "legato",
         "type": EnvType.GYM_TYPE,
         "env_kwargs": {}
     }
@@ -113,7 +113,6 @@ def train(config, device, info, ckpt_path=None):
 
     if ckpt_path is not None:
         print("Loading checkpoint from {}".format(ckpt_path))
-        # model.load_checkpoint(ckpt_path)
         ckpt_model, ckpt_dict = policy_from_checkpoint(ckpt_path=ckpt_path, device=device)
         model=ckpt_model.policy
         model.set_train()
@@ -131,7 +130,7 @@ def train(config, device, info, ckpt_path=None):
     print(model)
 
     wandb_logger = WandbLogger(project=info['note']['experiment'],
-                               task=info['note']['task'],
+                               task="legato",
                                path=log_dir, 
                                config=info['config'], 
                                model=model.nets)
@@ -256,8 +255,8 @@ def main():
 
     info = {}
     info['config'] = ext_cfg
-    info['note'] = {'experiment': args.exp, 'dataset': args.data_path, 'env_name': 'legato'}
-    
+    info['note'] = {'experiment': args.exp, 'dataset': args.data_path}
+
     # update config with external json - this will throw errors if
     # the external config has keys not present in the base algo config
     with config.values_unlocked():
