@@ -178,14 +178,12 @@ highlight {
     <a href="https://yukezhu.me/">Yuke Zhu<sup>1&dagger;</sup></a>&nbsp;&nbsp;&nbsp;
     <a href="https://www.ae.utexas.edu/people/faculty/faculty-directory/sentis/">Luis Sentis<sup>1,2&dagger;</sup></a>&nbsp;&nbsp;&nbsp; 
   </h3>
-  <h3>IEEE Robotics and Automation Letters (RA-L), 2025</h3>
   <h3>
     <a href="https://www.utexas.edu/"><sup>1</sup>The University of Texas at Austin</a>&nbsp;&nbsp;&nbsp;
     <a href="https://theaiinstitute.com/"><sup>2</sup>The AI Institute</a>&nbsp;&nbsp;&nbsp;
     <sup>&dagger;</sup> Equal advising
   </h3>
-</center>
-<center>
+  <h3>IEEE Robotics and Automation Letters (RA-L), 2025</h3>
   <h3>
     <a href="http://arxiv.org/abs/2411.03682">
       <i class="ai ai-arxiv"></i> Paper</a> | 
@@ -196,12 +194,6 @@ highlight {
     <a href="./src/file/appendix.pdf" download>
       <i class="fa-solid fa-file-pdf"></i> Appendix</a>
   </h3>
-</center>
-
-<center>
-  <p>
-    <span style="font-size:20px;"></span>
-  </p>
 </center>
 
 <table border="0" cellspacing="10" cellpadding="0" align="center">
