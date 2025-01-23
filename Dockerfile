@@ -9,7 +9,7 @@ RUN apt update && apt install -y --no-install-recommends \
     build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev lzma liblzma-dev \
     git curl cmake ffmpeg libsm6 libxext6 libgl1-mesa-glx\
     libglfw3-dev libgles2-mesa-dev \
-    coreutils \
+    coreutils xvfb\
     && apt clean && rm -rf /var/lib/apt/lists/*
 
 # Download and build Python 3.9.1
@@ -49,7 +49,7 @@ WORKDIR /workspace/LEGATO
 COPY . .
 
 # Expose the ports needed by the application
-EXPOSE 8888
+EXPOSE 5901
 
 # Default command to keep the container running
 CMD ["bash"]
