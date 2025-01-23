@@ -47,3 +47,13 @@ LEGATO is released under the [MIT License](LICENSE). The `flex_ik_solver` part o
     primaryClass={cs.RO}
 }
 ```
+
+## Fix
+- Changed requirements.txt
+- Removed "frontview" on models/base.xml
+- Added Dockerfile
+
+## How to use Docker container
+1. docker build -t legato .
+2. Install nvidia container toolkit
+3. 
