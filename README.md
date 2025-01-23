@@ -54,6 +54,7 @@ LEGATO is released under the [MIT License](LICENSE). The `flex_ik_solver` part o
 - Added Dockerfile
 
 ## How to use Docker container
+0. Place your check point (pth) file on the root of this project
 1. Build a container `docker build -t legato .`
 2. Install nvidia container toolkit to use host's GPU
 3. Disable access control by `xhost +`
