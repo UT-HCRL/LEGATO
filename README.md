@@ -58,7 +58,7 @@ LEGATO is released under the [MIT License](LICENSE). The `flex_ik_solver` part o
 1. Build a container `docker build -t legato .`
 2. Install nvidia container toolkit to use host's GPU
 3. Disable access control by `xhost +`
-4. `docker run --gpus all -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -it --rm -p 5901:5901 -v $(pwd):/workspace/LEGATO legato'
+4. `docker run --gpus all -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -it --rm -p 5901:5901 -v $(pwd):/workspace/LEGATO legato`
 5. Inside the container, `python scripts/sim_evaluate.py --task=lid --robot=abstract --seed=0 --ckpt_path='<TRAINING CHECKPOINT FILE PATH>'`
 6. After finishing, on the host, `xhost -` to enable access control again
 

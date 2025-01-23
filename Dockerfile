@@ -33,11 +33,8 @@ RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python
 # Clone the LEGATO repository
 # RUN git clone https://github.com/UT-HCRL/LEGATO.git /workspace/LEGATO
 
-# Set the working directory to the LEGATO folder
-# WORKDIR /workspace/LEGATO
+# Install required pip packages
 COPY requirements.txt .
-
-# Install Python dependencies from the project's requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # RUN git clone https://github.com/ARISE-Initiative/robosuite.git
