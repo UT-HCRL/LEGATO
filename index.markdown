@@ -259,7 +259,7 @@ highlight {
 </table>
 
 <hr>
-<h1 align="center">Wearable Gripper Design</h1>
+<h1 align="center">Handheld Gripper Design</h1>
 
 <table border="0" cellspacing="10" cellpadding="0" align="center">
   <tbody>
