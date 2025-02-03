@@ -47,3 +47,12 @@ LEGATO is released under the [MIT License](LICENSE). The `flex_ik_solver` part o
     primaryClass={cs.RO}
 }
 ```
+
+## Fix
+- Changed requirements.txt
+- Removed "frontview" on models/base.xml
+- Added Dockerfile
+
+
+## Remote GUI reference
+https://leimao.github.io/blog/Docker-Container-GUI-Display/
