@@ -35,7 +35,7 @@ RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python
 
 # Install required pip packages
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements-docker.txt
 
 # RUN git clone https://github.com/ARISE-Initiative/robosuite.git
 # WORKDIR /workspace/robosuite
