@@ -23,11 +23,11 @@ If you find our work useful in your research, please consider [citing](#citing).
 Please see [Setup](docs/setup.md) and [Usage](docs/usage.md).
 
 
-## Dataset and pre-trained models
+## Dataset and Pre-trained Models
 We provide our demonstration dataset in simulation environment ([link](https://utexas.box.com/s/5twb8okdnfr2uhyf4fj3bh5ohu4w3o4r)) and trained models of the Visuomotor Policies ([link](https://utexas.box.com/s/392bihmqdulcwj5aqndl2w2hohxt1rza)).
 
 
-## Real-robot scripts
+## Real-Robot Scripts
 We are currently working on open-sourcing the scripts for deploying on real robots.
 
 
@@ -47,12 +47,3 @@ LEGATO is released under the [MIT License](LICENSE). The `flex_ik_solver` part o
     primaryClass={cs.RO}
 }
 ```
-
-## Fix
-- Changed requirements.txt
-- Removed "frontview" on models/base.xml
-- Added Dockerfile
-
-
-## Remote GUI reference
-https://leimao.github.io/blog/Docker-Container-GUI-Display/

@@ -1,4 +1,4 @@
-# Creating the Data Set
+# Creating a Dataset
 Use the following commands to collect human demonstration data for a Visuomotor Policy. Then, run the following script on the host machine.
 ```
 python3 scripts/sim_demo.py --task=TASK --robot=ROBOT --path=PATH
@@ -45,7 +45,7 @@ python3 scripts/sim_evaluate.py --task=TASK --robot=ROBOT --seed=SEED --ckpt_pat
 ```
 Here, you must specify the path to the pre-trained checkpoint as `PATH_TO_CHECKPOINT`. The task must be specified as `TASK` and can be one of the following: `lid` (Closing the lid), `cup` (Cup shelving), or `ladle` (Ladle reorganization). The deployment embodiment, `ROBOT`, can be specified as one of the following: `abstract`, `panda`, `spot`, `google`, or `gr1`.
 
-## Use Docker container for evaluation
+## Using Docker Container for Evaluation
 0. Place your check point (pth) file on the root of this project
 1. Build a container `docker build -t legato .`
 2. Install nvidia container toolkit to use host's GPU
@@ -54,3 +54,5 @@ Here, you must specify the path to the pre-trained checkpoint as `PATH_TO_CHECKP
 5. Inside the container, `python scripts/sim_evaluate.py --task=lid --robot=abstract --seed=0 --ckpt_path='<TRAINING CHECKPOINT FILE PATH>'`
 6. After finishing, on the host, `xhost -` to enable access control again
 7. You might need to change the base.xml file (just remove "frontview")
+
+Remote GUI reference: https://leimao.github.io/blog/Docker-Container-GUI-Display/

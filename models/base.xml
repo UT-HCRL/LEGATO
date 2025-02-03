@@ -14,10 +14,10 @@
   <actuator>
   </actuator>
   <worldbody>
-    <camera mode="fixed" fovy="89" name="envview" pos="-2.0 0 0.75" quat="0.5 -0.5 -0.5 0.5"/>
-    <camera mode="fixed" fovy="60" name="backview" pos="-2.0 0 0.75" quat="0.5 -0.5 -0.5 0.5" />
+    <camera mode="fixed" name="envview" fovy="89" pos="-2.0 0 0.75" quat="0.5 -0.5 -0.5 0.5"/>
     <camera mode="fixed" name="demoview" pos="-0.50 0.0 2.0" quat="0.66 -0.2538 -0.2538 0.66 "/>
     <camera mode="fixed" name="frontview" pos="1.5 0.0 2.0" quat="0.6532815 -0.2705981 0.2705981 -0.6532815 "/>
+    <camera mode="fixed" name="backview" pos="-1.0 0.0 2.0" quat="0.6532815 -0.2705981 -0.2705981 0.6532815 "/>
     <camera mode="fixed" name="topview" pos="1.0 0.0 2.2" quat="0.7071 0 0 0.7071" />
     <geom size="3 3 0.1" pos="0 0 -0.1" quat="0 0 0 1" type="box" group="0" name="ground" rgba="0 0 0 0" margin="-0.005" conaffinity="15" condim="3" friction="1"/>
   </worldbody>

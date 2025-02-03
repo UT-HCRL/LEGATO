@@ -34,7 +34,7 @@ Prior to running your devices, make sure your machine allow a local user to acce
 sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
 ```
 
-## Julia Installation for IK acceleration
+## Julia Installation for IK Acceleration
 The IK optimizer implemented in this project can be accelerated using Julia. If you need IK acceleration, install Julia with the following command.
 ```
 curl -fsSL https://install.julialang.org | sh
