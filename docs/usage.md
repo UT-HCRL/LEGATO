@@ -44,3 +44,13 @@ For evaluating a Visuomotor Policy, please use the following commands.
 python3 scripts/sim_evaluate.py --task=TASK --robot=ROBOT --seed=SEED --ckpt_path=PATH_TO_CHECKPOINT
 ```
 Here, you must specify the path to the pre-trained checkpoint as `PATH_TO_CHECKPOINT`. The task must be specified as `TASK` and can be one of the following: `lid` (Closing the lid), `cup` (Cup shelving), or `ladle` (Ladle reorganization). The deployment embodiment, `ROBOT`, can be specified as one of the following: `abstract`, `panda`, `spot`, `google`, or `gr1`.
+
+## Use Docker container for evaluation
+0. Place your check point (pth) file on the root of this project
+1. Build a container `docker build -t legato .`
+2. Install nvidia container toolkit to use host's GPU
+3. Disable access control by `xhost +`
+4. `docker run --gpus all -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -it --rm -p 5901:5901 -v $(pwd):/workspace/LEGATO legato`
+5. Inside the container, `python scripts/sim_evaluate.py --task=lid --robot=abstract --seed=0 --ckpt_path='<TRAINING CHECKPOINT FILE PATH>'`
+6. After finishing, on the host, `xhost -` to enable access control again
+7. You might need to change the base.xml file (just remove "frontview")
