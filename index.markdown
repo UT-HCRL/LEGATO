@@ -451,14 +451,12 @@ highlight {
     <td>
     <!-- <left> -->
     <pre><code style="display:block; overflow-x: auto">
-      @misc{seo2024legato,
-        title={LEGATO: Cross-Embodiment Visual Imitation Using a Grasping Tool},
+      @article{seo2024legato,
+        title={LEGATO: Cross-Embodiment Imitation Using a Grasping Tool},
         author={Seo, Mingyo and Park, H. Andy and Yuan, Shenli and Zhu, Yuke and
           and Sentis, Luis},
-        year={2024}
-        eprint={2411.03682},
-        archivePrefix={arXiv},
-        primaryClass={cs.RO}
+        journal={IEEE Robotics and Automation Letters (RA-L)},
+        year={2025}
       }
     </code></pre>
     <!-- </left> -->
