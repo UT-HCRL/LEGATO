@@ -30,6 +30,10 @@ hdf5 dataset
     ├── delta_positions: 6D value
     └── delta_eulers: 6D value
 ```
+To visualize the generated dataset, run the following script. Please set `VISUALIZATION_MODE` to either `obs` for ego-centric observations or `action` to visualize actions, including the handheld gripper's trajectories and grasping.
+```
+python3 scripts/bc_visualize.py --dataset=PATH_TO_DATASET --mode=VISUALIZATION_MODE --out=PATH_TO_OUTPUT_VIDEO
+```
 
 # Training
 For training a Visuomotor Policy, please use the following commands.
