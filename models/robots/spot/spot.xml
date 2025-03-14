@@ -1,0 +1,191 @@
+<mujoco model="spot">
+    <compiler angle="radian" meshdir="obj_meshes" texturedir="obj_meshes" autolimits="true"/>
+		<option integrator="implicit"/>
+
+		<default>
+		  <default class="spot">
+		    <material specular="0.5" shininess="0.25"/>
+		    <joint armature="0.1" damping="1" axis="0 0 1" range="-2.8973 2.8973"/>
+		    <general dyntype="none" biastype="affine" ctrlrange="-2.8973 2.8973" forcerange="-87 87"/>
+			</default>
+			<default class="visual">
+		    <geom group="2" type="mesh" contype="0" conaffinity="0"/>
+		  </default>
+		  <default class="collision">
+		    <geom group="3" type="mesh"/>
+		  </default>
+		</default>
+    <asset>
+		  	<texture type="2d" name="body_others" file="body_others.png"/>
+				<material name="material_body_others" texture="body_others" specular="1.0" shininess="0.0"/>
+				<texture type="2d" name="yellow_parts" file="yellow_parts.png"/>
+				<material name="material_yellow_parts_body" texture="yellow_parts" specular="1.0" shininess="0.0"/>
+        <texture type="2d" name="lleg" file="lleg.png"/>
+        <material name="material_lleg" texture="lleg" specular="1.0" shininess="0.0"/>
+        <texture type="2d" name="black_leg" file="black_leg.png"/>
+        <material name="material_leg_black" texture="black_leg" specular="1.0" shininess="0.0"/>
+        <texture type="2d" name="yellow_leg" file="yellow_leg.png"/>
+        <material name="material_leg_yellow" texture="yellow_leg" specular="1.0" shininess="0.0"/>
+        <texture type="2d" name="hip" file="hip.png"/>
+        <material name="material_hip" texture="hip" specular="1.0" shininess="0.0"/>
+        <material name="yellow" rgba="1 0.945 0.537 1"/>
+        <material name="black" rgba="0.2 0.21960784 0.25098039 1"/>
+
+				<mesh file="spot_body_0.obj"/>
+				<mesh file="spot_body_1.obj"/>
+        <mesh name="fl_hip" file="fl_hip.obj" />
+        <mesh name="fr_hip" file="fr_hip.obj" />
+        <mesh name="hl_hip" file="hl_hip.obj" />
+        <mesh name="hr_hip" file="hr_hip.obj" />
+        <mesh file="fl_uleg_0.obj"/>
+        <mesh file="fl_uleg_1.obj"/>
+        <mesh file="fr_uleg_0.obj"/>
+        <mesh file="fr_uleg_1.obj"/>
+        <mesh file="hl_uleg_0.obj"/>
+        <mesh file="hl_uleg_1.obj"/>
+        <mesh file="hr_uleg_0.obj" />
+        <mesh file="hr_uleg_1.obj" />
+        <mesh name="lleg" file="lleg.obj" />
+        <mesh name="arm0_link_sh0" file="arm0_link_sh0.obj" />
+        <mesh name="arm0_link_sh1" file="arm0_link_sh1.obj" />
+        <mesh name="arm0_link_hr0" file="arm0_link_hr0.obj" />
+        <mesh name="arm0_link_el0" file="arm0_link_el0.obj" />
+        <mesh name="arm0_link_el1" file="arm0_link_el1.obj" />
+        <mesh name="arm0_link_wr0" file="arm0_link_wr0.obj" />
+        <mesh name="arm0_link_wr1" file="arm0_link_wr1.obj" />
+        <mesh name="arm0_link_fngr" file="arm0_link_fngr.obj" />
+    </asset>
+    <worldbody>
+        <body name="base" pos="0 0 0.7">
+          <freejoint/>
+          <geom mesh="spot_body_0" material="material_yellow_parts_body" class="visual"/>
+          <geom mesh="spot_body_1" material="material_body_others" class="visual"/>
+          <geom mesh="spot_body_0" class="collision"/>
+          <geom mesh="spot_body_1" class="collision"/>
+          <inertial pos="0 0 -0.00496172" quat="0 0.707107 0 0.707107" mass="16.7077" diaginertia="0.569454 0.549231 0.0815438" />
+          <body name="fl.hip" pos="0.29785 0.055 0">
+              <inertial pos="-0.0158674 0.00855842 9.03e-06" quat="-0.137996 0.694859 0.131743 0.693377" mass="1.13688" diaginertia="0.00172904 0.00166127 0.00114996" />
+              <joint name="fl.hx" pos="0 0 0" axis="1 0 0" limited="true" range="-0.785398 0.785398" />
+              <geom material="material_hip" mesh="fl_hip" class="visual"/>
+              <geom mesh="fl_hip" class="collision"/>
+              <body name="fl.uleg" pos="0 0.110945 0">
+                  <inertial pos="0.00214442 -0.0111018 -0.078812" quat="0.998684 0.0454551 -0.0106253 -0.0212473" mass="2.2562" diaginertia="0.0269394 0.0260254 0.00298666" />
+                  <joint name="fl.hy" pos="0 0 0" axis="0 1 0" limited="true" range="-0.898845 2.29511" />
+                  <geom mesh="fl_uleg_0" material="material_leg_yellow" class="visual"/>
+                  <geom mesh="fl_uleg_1" material="material_leg_black" class="visual"/>
+                  <geom mesh="fl_uleg_0" class="collision"/>
+                  <geom mesh="fl_uleg_1" class="collision"/>
+                  <body name="fl.lleg" pos="0.025 0 -0.3205">
+                      <inertial pos="0.0059736 0 -0.174664" quat="0.707099 -0.00339701 -0.00339701 0.707099" mass="0.33" diaginertia="0.00709946 0.00701419 0.000144656" />
+                      <joint name="fl.kn" pos="0 0 0" axis="0 1 0" limited="true" range="-2.7929 -0.2471" />
+                      <geom material="material_lleg" mesh="lleg" class="visual"/>
+                      <geom mesh="lleg" class="collision"/>
+                  </body>
+              </body>
+          </body>
+          <body name="fr.hip" pos="0.29785 -0.055 0">
+              <inertial pos="-0.0158674 -0.00855842 9.03e-06" quat="0.137996 0.694859 -0.131743 0.693377" mass="1.13688" diaginertia="0.00172904 0.00166127 0.00114996" />
+              <joint name="fr.hx" pos="0 0 0" axis="1 0 0" limited="true" range="-0.785398 0.785398" />
+              <geom material="material_hip" mesh="fr_hip" class="visual"/>
+              <geom mesh="fr_hip" class="collision"/>
+              <body name="fr.uleg" pos="0 -0.110945 0">
+                  <inertial pos="0.00214442 0.0111018 -0.078812" quat="0.998684 -0.0454551 -0.0106253 0.0212473" mass="2.2562" diaginertia="0.0269394 0.0260254 0.00298666" />
+                  <joint name="fr.hy" pos="0 0 0" axis="0 1 0" limited="true" range="-0.898845 2.29511" />
+                  <geom mesh="fr_uleg_0" material="material_leg_yellow" class="visual"/>
+                  <geom mesh="fr_uleg_1" material="material_leg_black" class="visual"/>
+                  <geom mesh="fr_uleg_0" class="collision"/>
+                  <geom mesh="fr_uleg_1" class="collision"/>
+                  <body name="fr.lleg" pos="0.025 0 -0.3205">
+                      <geom material="material_lleg" mesh="lleg" class="visual"/>
+                      <geom mesh="lleg" class="collision"/>
+                      <inertial pos="0.0059736 0 -0.174664" quat="0.707099 -0.00339701 -0.00339701 0.707099" mass="0.33" diaginertia="0.00709946 0.00701419 0.000144656" />
+                      <joint name="fr.kn" pos="0 0 0" axis="0 1 0" limited="true" range="-2.7929 -0.2471" />
+                  </body>
+              </body>
+          </body>
+          <body name="hl.hip" pos="-0.29785 0.055 0">
+              <inertial pos="0.0158674 0.00855842 9.03e-06" quat="0.131743 0.693377 -0.137996 0.694859" mass="1.13688" diaginertia="0.00172904 0.00166127 0.00114996" />
+              <joint name="hl.hx" pos="0 0 0" axis="1 0 0" limited="true" range="-0.785398 0.785398" />
+              <geom material="material_hip" mesh="hr_hip" class="visual"/>
+              <geom mesh="hr_hip" class="collision"/>
+              <body name="hl.uleg" pos="0 0.110945 0">
+                  <inertial pos="0.00214442 -0.0111018 -0.078812" quat="0.998684 0.0454551 -0.0106253 -0.0212473" mass="2.2562" diaginertia="0.0269394 0.0260254 0.00298666" />
+                  <joint name="hl.hy" pos="0 0 0" axis="0 1 0" limited="true" range="-0.898845 2.29511" />
+                  <geom mesh="hl_uleg_0" material="material_leg_black" class="visual"/>
+                  <geom mesh="hl_uleg_1" material="material_leg_yellow" class="visual"/>
+                  <geom mesh="hl_uleg_0" class="collision"/>
+                  <geom mesh="hl_uleg_1" class="collision"/>
+                  <body name="hl.lleg" pos="0.025 0 -0.3205">
+                      <inertial pos="0.0059736 0 -0.174664" quat="0.707099 -0.00339701 -0.00339701 0.707099" mass="0.33" diaginertia="0.00709946 0.00701419 0.000144656" />
+                      <joint name="hl.kn" pos="0 0 0" axis="0 1 0" limited="true" range="-2.7929 -0.2471" />
+                      <geom material="material_lleg" mesh="lleg" class="visual"/>
+                      <geom mesh="lleg" class="collision"/>
+                  </body>
+              </body>
+          </body>
+          <body name="hr.hip" pos="-0.29785 -0.055 0">
+              <inertial pos="0.0158674 -0.00855842 9.03e-06" quat="-0.131743 0.693377 0.137996 0.694859" mass="1.13688" diaginertia="0.00172904 0.00166127 0.00114996" />
+              <joint name="hr.hx" pos="0 0 0" axis="1 0 0" limited="true" range="-0.785398 0.785398" />
+              <geom type="mesh" contype="0" conaffinity="1" group="1" mesh="hr_hip" />
+              <body name="hr.uleg" pos="0 -0.110945 0">
+                  <inertial pos="0.00214442 0.0111018 -0.078812" quat="0.998684 -0.0454551 -0.0106253 0.0212473" mass="2.2562" diaginertia="0.0269394 0.0260254 0.00298666" />
+                  <joint name="hr.hy" pos="0 0 0" axis="0 1 0" limited="true" range="-0.898845 2.29511" />
+                  <geom mesh="hr_uleg_0" material="material_leg_yellow" class="visual"/>
+                  <geom mesh="hr_uleg_1" material="material_leg_black" class="visual"/>
+                  <geom mesh="hr_uleg_0" class="collision"/>
+                  <geom mesh="hr_uleg_1" class="collision"/>
+                  <body name="hr.lleg" pos="0.025 0 -0.3205">
+                      <inertial pos="0.0059736 0 -0.174664" quat="0.707099 -0.00339701 -0.00339701 0.707099" mass="0.33" diaginertia="0.00709946 0.00701419 0.000144656" />
+                      <joint name="hr.kn" pos="0 0 0" axis="0 1 0" limited="true" range="-2.7929 -0.2471" />
+                      <geom material="material_lleg" mesh="lleg" class="visual"/>
+                      <geom mesh="lleg" class="collision"/>
+                  </body>
+              </body>
+          </body>
+          <body name="arm0.link_sh0" pos="0.292 0 0.188">
+              <inertial pos="-0.008399 0.000272 -0.024603" quat="0.710827 0.700855 0.0423863 -0.0416066" mass="1.9047" diaginertia="0.00891905 0.00728042 0.00492153" />
+              <joint name="arm0.sh0" pos="0 0 0" axis="0 0 1" limited="true" range="-2.61799 3.14159" frictionloss="10" />
+              <geom mesh="arm0_link_sh0" material="black" class="visual"/>
+              <geom mesh="arm0_link_sh0" class="collision"/>
+              <body name="arm0.link_sh1" pos="0 0 0">
+                  <inertial pos="0.0808491 -0.00167243 0.00045644" quat="-0.00467017 0.708456 0.00702831 0.705705" mass="1.85702" diaginertia="0.0281997 0.0270454 0.00260818" />
+                  <joint name="arm0.sh1" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14159 0.523599" frictionloss="10" />
+                  <geom mesh="arm0_link_sh1" material="black" class="visual"/>
+                  <geom mesh="arm0_link_sh1" class="collision"/>
+                  <geom mesh="arm0_link_hr0" material="yellow" class="visual"/>
+                  <geom mesh="arm0_link_hr0" class="collision"/>
+                  <body name="arm0.link_el0" pos="0.3385 0 0">
+                      <inertial pos="0.0447662 -0.0027113 0.0499136" quat="0.0923782 0.888458 0.19384 0.40563" mass="0.94832" diaginertia="0.00286401 0.00265579 0.000960161" />
+                      <joint name="arm0.el0" pos="0 0 0" axis="0 1 0" limited="true" range="0 3.14159" frictionloss="10" />
+                      <geom mesh="arm0_link_el0" material="black" class="visual"/>
+                      <geom mesh="arm0_link_el0" class="collision"/>
+                      <body name="arm0.link_el1" pos="0.4033 0 0.075">
+                          <inertial pos="-0.168671 -0.0161612 1.149e-05" quat="0.488034 0.425158 0.565043 0.511654" mass="1.01755" diaginertia="0.0169253 0.0168986 0.000746021" />
+                          <joint name="arm0.el1" pos="0 0 0" axis="1 0 0" limited="true" range="-2.79253 2.79253" frictionloss="10" />
+                          <geom mesh="arm0_link_el1" material="yellow" class="visual"/>
+                          <geom mesh="arm0_link_el1" class="collision"/>
+                          <body name="arm0.link_wr0" pos="0 0 0">
+                              <inertial pos="0.00952465 -0.0114441 1.86e-06" quat="0.308237 0.652328 -0.273781 0.636005" mass="0.582637" diaginertia="0.000536182 0.000528639 0.000388399" />
+                              <joint name="arm0.wr0" pos="0 0 0" axis="0 1 0" limited="true" range="-1.8326 1.8326" frictionloss="10" />
+                              <geom mesh="arm0_link_wr0" material="black" class="visual"/>
+                              <geom mesh="arm0_link_wr0" class="collision"/>
+                              <body name="arm0.link_wr1" pos="0 0 0">
+                                  <inertial pos="0.0975128 9.265e-05 -0.0112052" quat="0.592778 0.385047 0.386229 0.592605" mass="0.933353" diaginertia="0.00197018 0.00182151 0.00082476" />
+                                  <joint name="arm0.wr1" pos="0 0 0" axis="1 0 0" limited="true" range="-2.87989 2.87979" frictionloss="10" />
+                                  <geom mesh="arm0_link_wr1" material="yellow" class="visual"/>
+                                  <geom mesh="arm0_link_wr1" class="collision"/>
+                                  <body name="arm0.link_fngr" pos="0.11745 0 0.01482">
+                                      <inertial pos="0.0356518 0.000672 -0.0122752" quat="0.00481109 0.567709 0.0124565 0.823121" mass="0.223833" diaginertia="0.000648792 0.000484516 0.000194933" />
+                                      <joint name="arm0.f1x" pos="0 0 0" axis="0 1 0" limited="true" range="-1.5708 0" frictionloss="10" />
+                                      <geom mesh="arm0_link_fngr" material="yellow" class="visual"/>
+                                      <geom mesh="arm0_link_fngr" class="collision"/>
+                                  </body>
+                              </body>
+                          </body>
+                      </body>
+                  </body>
+              </body>
+          </body>
+        </body>
+    </worldbody>
+</mujoco>

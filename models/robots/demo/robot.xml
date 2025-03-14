@@ -6,6 +6,7 @@
         <motor joint="root_r"       name="torque_body_r"/>
         <motor joint="root_p"       name="torque_body_p"/>
         <motor joint="root_yw"      name="torque_body_yw"/> -->
+        <!-- <motor joint="root_quat"    name="torque_body_quat"/> -->
 
         <motor joint="joint_neck"               name="torque_neck"          ctrllimited="true"     ctrlrange="-80.0 80.0"/>
         <motor joint="joint_neck_y"             name="torque_neck_y"        ctrllimited="true"     ctrlrange="-80.0 80.0"/>
@@ -13,6 +14,7 @@
         <motor joint="joint_neck_r"             name="torque_neck_r"        ctrllimited="true"     ctrlrange="-80.0 80.0"/>
         <motor joint="joint_neck_p"             name="torque_neck_p"        ctrllimited="true"     ctrlrange="-80.0 80.0"/>
         <motor joint="joint_neck_yw"            name="torque_neck_yw"       ctrllimited="true"     ctrlrange="-80.0 80.0"/>
+        <!-- <motor joint="joint_neck_quat"    name="torque_neck_quat"/> -->
 
         <motor joint="joint_right_hand"         name="torque_right_hand"    ctrllimited="true"     ctrlrange="-80.0 80.0"/>
         <motor joint="joint_right_hand_y"       name="torque_right_hand_y"  ctrllimited="true"     ctrlrange="-80.0 80.0"/>
@@ -20,6 +22,7 @@
         <motor joint="joint_right_hand_r"       name="torque_right_hand_r"  ctrllimited="true"     ctrlrange="-80.0 80.0"/>
         <motor joint="joint_right_hand_p"       name="torque_right_hand_p"  ctrllimited="true"     ctrlrange="-80.0 80.0"/>
         <motor joint="joint_right_hand_yw"      name="torque_right_hand_yw" ctrllimited="true"     ctrlrange="-80.0 80.0"/>
+        <!-- <motor joint="joint_right_hand_quat"    name="torque_right_hand_quat"/> -->
 
         <motor joint="joint_left_hand"         name="torque_left_hand"      ctrllimited="true"     ctrlrange="-80.0 80.0"/>
         <motor joint="joint_left_hand_y"       name="torque_left_hand_y"    ctrllimited="true"     ctrlrange="-80.0 80.0"/>
@@ -27,13 +30,12 @@
         <motor joint="joint_left_hand_r"       name="torque_left_hand_r"    ctrllimited="true"     ctrlrange="-80.0 80.0"/>
         <motor joint="joint_left_hand_p"       name="torque_left_hand_p"    ctrllimited="true"     ctrlrange="-80.0 80.0"/>
         <motor joint="joint_left_hand_yw"      name="torque_left_hand_yw"   ctrllimited="true"     ctrlrange="-80.0 80.0"/>
+        <!-- <motor joint="joint_left_hand_quat"    name="torque_left_hand_quat"/> -->
+
 
     </actuator>
 
     <asset>
-        <mesh file="meshes/hand.stl" name="right_hand_mesh" scale="0.002 0.002 0.002"/>
-        <mesh file="meshes/hand.stl" name="left_hand_mesh" scale="0.002 -0.002 0.002"/>
-        <material name="MatMetal" specular="1" shininess="0.3" rgba="0.9 0.9 0.9 1" />
     </asset>
 
     <worldbody>
@@ -122,6 +124,10 @@
                     type="hinge" limited="false" 
                     armature="0" stiffness="0" damping="0.99" frictionloss="0.99" 
                     />
+                <!-- <joint name="joint_neck_quat"
+                    type="ball" limited="false" 
+                    armature="0" stiffness="0" damping="0.99" frictionloss="0.99" 
+                    /> -->
                 <geom type="sphere" size="0.075" pos="0 0 0.15"
                     rgba="1.0 0.2 0.2 1"
                     contype="0" conaffinity="0" group="1" 
@@ -167,23 +173,23 @@
                 <inertial pos="0 0 0" mass="1.0e-6" diaginertia="1.0e-9 1.0e-9 1.0e-9"/>
             <body name="left_arm" pos="0 0 0">
                 <inertial pos="0 0 0" mass="1.0e-0" diaginertia="1.0e-4 1.0e-4 1.0e-4"/>
-                <geom name='geom_left_hand_visual' 
-                    pos="-0.03 0.0 0.03" type="mesh" mesh="left_hand_mesh" quat=" 0 -0.5 0 0.80"
-                    group="1" contype="0" conaffinity="0"
-                    rgba="1.0 0.2 0.2 1"
-                    />
                 <joint name="joint_left_hand_yw" axis="0 0 1"
                     type="hinge" limited="false" 
                     armature="0" stiffness="0" damping="0.99" frictionloss="0.99" 
                     />
+                <!-- <joint name="joint_left_hand_quat"
+                    type="ball" limited="false" 
+                    armature="0" stiffness="0" damping="0.99" frictionloss="0.99" 
+                    /> -->
+                <!-- <geom type="sphere" size="0.05" 
+                    rgba="1.0 0.2 0.2 1"
+                    contype="0" conaffinity="0" group="1" 
+                    /> -->
                 <body name="left_eef_point" pos="0 0 0">
                     <body name="left_gripper_mount" pos="0 0 0" quat="0.5 0.5 0.5 0.5">
                         <camera mode="fixed" name="stereo_l_left_hand" pos="0.05 0.1 -0.1" quat="0 1 0 0" fovy="75"/>
                         <camera mode="fixed" name="stereo_r_left_hand" pos="-0.05 0.1 -0.1" quat="0 1 0 0" fovy="75"/>
                     </body>
-                </body>
-                <body name="left_tool_point" pos="0 0 0">
-                    <body name="left_tool_mount" pos="0.0 0.0 0.0" quat="0.5 0.5 0.5 0.5"/>
                 </body>
 
             </body>
@@ -226,23 +232,23 @@
                 <inertial pos="0 0 0" mass="1.0e-6" diaginertia="1.0e-9 1.0e-9 1.0e-9"/>
             <body name="right_arm" pos="0 0 0">
                 <inertial pos="0 0 0" mass="1.0e-0" diaginertia="1.0e-4 1.0e-4 1.0e-4"/>
-                <geom name='geom_right_hand_visual' 
-                    pos="-0.03 0.0 0.03" type="mesh" mesh="right_hand_mesh" quat=" 0 -0.5 0 0.80"
-                    group="1" contype="0" conaffinity="0"
-                    rgba="1.0 0.2 0.2 1"
-                    />
                 <joint name="joint_right_hand_yw" axis="0 0 1"
                     type="hinge" limited="false" 
                     armature="0" stiffness="0" damping="0.99" frictionloss="0.99" 
                     />
+                <!-- <joint name="joint_right_hand_quat"
+                    type="ball" limited="false" 
+                    armature="0" stiffness="0" damping="0.99" frictionloss="0.99" 
+                    /> -->
+                <!-- <geom type="sphere" size="0.05" 
+                    rgba="1.0 0.2 0.2 1"
+                    contype="0" conaffinity="0" group="1" 
+                    /> -->
                 <body name="right_eef_point" pos="0 0 0">
                     <body name="right_gripper_mount" pos="0 0 0" quat="0.5 0.5 0.5 0.5">
                         <camera mode="fixed" name="stereo_l_right_hand" pos="0.05 0.1 0.0" quat="0 1 0 0" fovy="120"/>
                         <camera mode="fixed" name="stereo_r_right_hand" pos="-0.05 0.1 0.0" quat="0 1 0 0" fovy="120"/>
                     </body>
-                </body>
-                <body name="right_tool_point" pos="0 0 0">
-                    <body name="right_tool_mount" pos="0.0 0.0 0.0" quat="0.5 0.5 0.5 0.5"/>
                 </body>
             </body>
             </body>

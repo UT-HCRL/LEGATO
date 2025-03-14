@@ -58,12 +58,6 @@ def euler_to_quat(angles):
     return np.copy((R.from_euler('xyz', angles, degrees=False)).as_quat())
 
 
-def euler_to_axis_angle(angles):
-    # Euler ZYX to Rot
-    # Note that towr has (x, y, z) order
-    return np.copy((R.from_euler('xyz', angles, degrees=False)).as_rotvec())
-
-
 def quat_to_rot(quat):
     """
     Parameters
@@ -132,20 +126,6 @@ def axis_angle_to_quat(rotvec):
 
     """
     return np.copy(R.from_rotvec(rotvec).as_quat())
-
-
-def axis_angle_to_rot(axis_angle):
-    """
-    Parameters
-    ----------
-    axis_angle (np.array): axis angle representation
-
-    Returns
-    -------
-    rot (np.array): SO3
-
-    """
-    return np.copy(R.from_rotvec(axis_angle).as_matrix())
 
 
 def quat_to_axis_angle(quat):

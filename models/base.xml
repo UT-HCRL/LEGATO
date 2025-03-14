@@ -3,7 +3,7 @@
     <compiler angle="radian" meshdir="./meshes/" inertiagrouprange="0 0" />
     <option impratio="40" cone="elliptic" density="1.2" viscosity="0.00002" timestep="0.002" />
     <option integrator="RK4" solver="PGS" iterations="50"  gravity='0 0 -9.81'/>
-    <size memory="256M"/>
+
   <asset>
   </asset>
 
@@ -12,13 +12,19 @@
   </visual>
 
   <actuator>
-  </actuator>
+  </actuator> 
   <worldbody>
-    <camera mode="fixed" name="envview" fovy="89" pos="-2.0 0 0.75" quat="0.5 -0.5 -0.5 0.5"/>
-    <camera mode="fixed" name="demoview" pos="-0.50 0.0 2.0" quat="0.66 -0.2538 -0.2538 0.66 "/>
-    <camera mode="fixed" name="frontview" pos="1.5 0.0 2.0" quat="0.6532815 -0.2705981 0.2705981 -0.6532815 "/>
-    <camera mode="fixed" name="backview" pos="-1.0 0.0 2.0" quat="0.6532815 -0.2705981 -0.2705981 0.6532815 "/>
+    <camera mode="fixed" fovy="89" name="envview" pos="-2.0 0 0.75" quat="0.5 -0.5 -0.5 0.5"/>
+    <camera mode="fixed" fovy="60" name="backview" pos="-1.0 0 1.25" quat="0.5 -0.5 -0.5 0.5" />
+    <camera mode="fixed" name="diagonalview" pos="-0.6 1.0 1.6" quat=" 0.73296291 -0.56242222 -0.23296291 0.30360318" fovy="60"/>
+    <camera mode="fixed" name="figure" pos="-0.7 0.9 1.9" quat=" 0.8 -0.5 -0.3 0.5" fovy="60"/>
+    <camera mode="fixed" name="upview" pos="-1.6 0.0 1.8" quat="0.4 -0.3 -0.3 0.4" />
+    <camera mode="fixed" name="kitchenview" pos="1.2 0 1.0" quat="0.5 -0.5 0.5 -0.5"/>
+    <camera mode="fixed" name="objectview" pos="0.5 0.0 4" quat="0.7071 0 0 0.7071" />
+    <camera mode="fixed" name="door_topview" pos="2.2 0.0 2" quat="0.7071 0 0 0.7071" />
     <camera mode="fixed" name="topview" pos="1.0 0.0 2.2" quat="0.7071 0 0 0.7071" />
+    <camera mode="fixed" name="debug_side_view" pos="0.0 1.5 1.2" quat="0.707 -0.707 0 0"  />
+    <camera mode="fixed" name="debug_front_view" pos="3.0 0.0 0.8" quat="0.5 -0.5 0.5 -0.5" />
     <geom size="3 3 0.1" pos="0 0 -0.1" quat="0 0 0 1" type="box" group="0" name="ground" rgba="0 0 0 0" margin="-0.005" conaffinity="15" condim="3" friction="1"/>
   </worldbody>
 

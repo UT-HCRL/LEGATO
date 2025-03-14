@@ -1,0 +1,235 @@
+<mujoco model="spot">
+    <compiler angle="radian" meshdir="./meshes" />
+    <size njmax="500" nconmax="100" />
+
+    <default class="a1">
+      <geom friction="0.6" margin="0.001"/>
+      <joint axis="0 1 0" damping="2" armature="0.01" frictionloss="0.2"/>
+      <position kp="100" forcerange="-33.5 33.5" forcelimited="true"/>
+      <default class="abduction">
+        <joint axis="1 0 0" damping="1" range="-0.802851 0.802851"/>
+        <position ctrlrange="-0.802851 0.802851" ctrllimited="true"/>
+      </default>
+      <default class="hip">
+        <joint range="-1.0472 4.18879"/>
+        <position ctrlrange="-1.0472 4.18879" ctrllimited="true"/>
+      </default>
+      <default class="knee">
+        <joint range="-2.69653 -0.916298"/>
+        <position ctrlrange="-2.69653 -0.916298" ctrllimited="true"/>
+      </default>
+      <default class="visual">
+        <geom type="mesh" contype="0" conaffinity="0" group="2" material="dark"/>
+      </default>
+      <default class="collision">
+        <geom group="3" type="capsule"/>
+        <default class="hip_left">
+          <geom size="0.04 0.04" quat="1 1 0 0" type="cylinder" pos="0 0.055 0"/>
+        </default>
+        <default class="hip_right">
+          <geom size="0.04 0.04" quat="1 1 0 0" type="cylinder" pos="0 -0.055 0"/>
+        </default>
+        <default class="thigh1">
+          <geom size="0.015" fromto="-0.02 0 0 -0.02 0 -0.16"/>
+        </default>
+        <default class="thigh2">
+          <geom size="0.015" fromto="0 0 0 -0.02 0 -0.1"/>
+        </default>
+        <default class="thigh3">
+          <geom size="0.015" fromto="-0.02 0 -0.16 0 0 -0.2"/>
+        </default>
+        <default class="calf1">
+          <geom size="0.01" fromto="0 0 0 0.02 0 -0.13"/>
+        </default>
+        <default class="calf2">
+          <geom size="0.01" fromto="0.02 0 -0.13 0 0 -0.2"/>
+        </default>
+        <default class="foot">
+          <geom type="sphere" size="0.02" pos="0 0 -0.2" priority="1" solimp="0.015 1 0.031"
+              condim="6" friction="0.8 0.02 0.01"/>
+        </default>
+      </default>
+
+    <default class="arm">
+      <material specular="0.5" shininess="0.25"/>
+      <joint armature="0.1" damping="1" axis="0 0 1" range="-2.8973 2.8973"/>
+      <general dyntype="none" biastype="affine" ctrlrange="-2.8973 2.8973" ctrllimited="true" forcerange="-87 87" forcelimited="true"/>
+      <default class="finger">
+        <joint axis="0 1 0" type="slide" range="0 0.04"/>
+      </default>
+    </default>
+
+
+    </default>
+
+
+    <asset>
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512"
+            height="3072"/>
+        <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4"
+            rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+        <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5"
+            reflectance="0.2"/>
+
+        <mesh name="spot_body" file="spot_body.stl" />
+        <mesh name="fl_hip" file="fl_hip.stl" />
+        <mesh name="fr_hip" file="fr_hip.stl" />
+        <mesh name="hl_hip" file="hl_hip.stl" />
+        <mesh name="hr_hip" file="hr_hip.stl" />
+        <mesh name="fl_uleg" file="fl_uleg.stl" />
+        <mesh name="fr_uleg" file="fr_uleg.stl" />
+        <mesh name="hl_uleg" file="hl_uleg.stl" />
+        <mesh name="hr_uleg" file="hr_uleg.stl" />
+        <mesh name="lleg" file="lleg.stl" />
+        <mesh name="arm0_link_sh0" file="arm0_link_sh0.stl" />
+        <mesh name="arm0_link_sh1" file="arm0_link_sh1.stl" />
+        <mesh name="arm0_link_hr0" file="arm0_link_hr0.stl" />
+        <mesh name="arm0_link_el0" file="arm0_link_el0.stl" />
+        <mesh name="arm0_link_el1" file="arm0_link_el1.stl" />
+        <mesh name="arm0_link_wr0" file="arm0_link_wr0.stl" />
+        <mesh name="arm0_link_wr1" file="arm0_link_wr1.stl" />
+        <mesh name="arm0_link_fngr" file="arm0_link_fngr.stl" />
+    </asset>
+    <worldbody>
+        <light pos="0 0 1.5" dir="0 0 -1" directional="true"/>
+        <geom name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
+
+        <body name="base" pos="0 0 3">
+            <inertial pos="0 0 -0.00496172" quat="0 0.707107 0 0.707107" mass="16.7077" diaginertia="0.569454 0.549231 0.0815438" />
+            <joint name="world_joint" type="free" />
+            <geom type="mesh" contype="0" conaffinity="1" group="1" rgba="0.2 0.2 0.2 1" mesh="spot_body" />
+            <body name="fl.hip" pos="0.29785 0.055 0">
+                <inertial pos="-0.0158674 0.00855842 9.03e-06" quat="-0.137996 0.694859 0.131743 0.693377" mass="1.13688" diaginertia="0.00172904 0.00166127 0.00114996" />
+                <joint name="fl.hx" pos="0 0 0" axis="1 0 0" limited="true" range="-0.785398 0.785398" />
+                <geom type="mesh" contype="0" conaffinity="1" group="1" mesh="fl_hip" />
+                <body name="fl.uleg" pos="0 0.110945 0">
+                    <inertial pos="0.00214442 -0.0111018 -0.078812" quat="0.998684 0.0454551 -0.0106253 -0.0212473" mass="2.2562" diaginertia="0.0269394 0.0260254 0.00298666" />
+                    <joint name="fl.hy" pos="0 0 0" axis="0 1 0" limited="true" range="-0.898845 2.29511" />
+                    <geom type="mesh" contype="0" conaffinity="1" group="1" mesh="fl_uleg" />
+                    <body name="fl.lleg" pos="0.025 0 -0.3205">
+                        <inertial pos="0.0059736 0 -0.174664" quat="0.707099 -0.00339701 -0.00339701 0.707099" mass="0.33" diaginertia="0.00709946 0.00701419 0.000144656" />
+                        <joint name="fl.kn" pos="0 0 0" axis="0 1 0" limited="true" range="-2.7929 -0.2471" />
+                        <geom type="mesh" contype="0" conaffinity="1" group="1" mesh="lleg" />
+                    </body>
+                </body>
+            </body>
+            <body name="fr.hip" pos="0.29785 -0.055 0">
+                <inertial pos="-0.0158674 -0.00855842 9.03e-06" quat="0.137996 0.694859 -0.131743 0.693377" mass="1.13688" diaginertia="0.00172904 0.00166127 0.00114996" />
+                <joint name="fr.hx" pos="0 0 0" axis="1 0 0" limited="true" range="-0.785398 0.785398" />
+                <geom type="mesh" contype="0" conaffinity="1" group="1" mesh="fr_hip" />
+                <body name="fr.uleg" pos="0 -0.110945 0">
+                    <inertial pos="0.00214442 0.0111018 -0.078812" quat="0.998684 -0.0454551 -0.0106253 0.0212473" mass="2.2562" diaginertia="0.0269394 0.0260254 0.00298666" />
+                    <joint name="fr.hy" pos="0 0 0" axis="0 1 0" limited="true" range="-0.898845 2.29511" />
+                    <geom type="mesh" contype="0" conaffinity="1" group="1" mesh="fr_uleg" />
+                    <body name="fr.lleg" pos="0.025 0 -0.3205">
+                        <inertial pos="0.0059736 0 -0.174664" quat="0.707099 -0.00339701 -0.00339701 0.707099" mass="0.33" diaginertia="0.00709946 0.00701419 0.000144656" />
+                        <joint name="fr.kn" pos="0 0 0" axis="0 1 0" limited="true" range="-2.7929 -0.2471" />
+                        <geom type="mesh" contype="0" conaffinity="1" group="1" mesh="lleg" />
+                    </body>
+                </body>
+            </body>
+            <body name="hl.hip" pos="-0.29785 0.055 0">
+                <inertial pos="0.0158674 0.00855842 9.03e-06" quat="0.131743 0.693377 -0.137996 0.694859" mass="1.13688" diaginertia="0.00172904 0.00166127 0.00114996" />
+                <joint name="hl.hx" pos="0 0 0" axis="1 0 0" limited="true" range="-0.785398 0.785398" />
+                <geom type="mesh" contype="0" conaffinity="1" group="1" mesh="hl_hip" />
+                <body name="hl.uleg" pos="0 0.110945 0">
+                    <inertial pos="0.00214442 -0.0111018 -0.078812" quat="0.998684 0.0454551 -0.0106253 -0.0212473" mass="2.2562" diaginertia="0.0269394 0.0260254 0.00298666" />
+                    <joint name="hl.hy" pos="0 0 0" axis="0 1 0" limited="true" range="-0.898845 2.29511" />
+                    <geom type="mesh" contype="0" conaffinity="1" group="1" mesh="hl_uleg" />
+                    <body name="hl.lleg" pos="0.025 0 -0.3205">
+                        <inertial pos="0.0059736 0 -0.174664" quat="0.707099 -0.00339701 -0.00339701 0.707099" mass="0.33" diaginertia="0.00709946 0.00701419 0.000144656" />
+                        <joint name="hl.kn" pos="0 0 0" axis="0 1 0" limited="true" range="-2.7929 -0.2471" />
+                        <geom type="mesh" contype="0" conaffinity="1" group="1" mesh="lleg" />
+                    </body>
+                </body>
+            </body>
+            <body name="hr.hip" pos="-0.29785 -0.055 0">
+                <inertial pos="0.0158674 -0.00855842 9.03e-06" quat="-0.131743 0.693377 0.137996 0.694859" mass="1.13688" diaginertia="0.00172904 0.00166127 0.00114996" />
+                <joint name="hr.hx" pos="0 0 0" axis="1 0 0" limited="true" range="-0.785398 0.785398" />
+                <geom type="mesh" contype="0" conaffinity="1" group="1" mesh="hr_hip" />
+                <body name="hr.uleg" pos="0 -0.110945 0">
+                    <inertial pos="0.00214442 0.0111018 -0.078812" quat="0.998684 -0.0454551 -0.0106253 0.0212473" mass="2.2562" diaginertia="0.0269394 0.0260254 0.00298666" />
+                    <joint name="hr.hy" pos="0 0 0" axis="0 1 0" limited="true" range="-0.898845 2.29511" />
+                    <geom type="mesh" contype="0" conaffinity="1" group="1" mesh="hr_uleg" />
+                    <body name="hr.lleg" pos="0.025 0 -0.3205">
+                        <inertial pos="0.0059736 0 -0.174664" quat="0.707099 -0.00339701 -0.00339701 0.707099" mass="0.33" diaginertia="0.00709946 0.00701419 0.000144656" />
+                        <joint name="hr.kn" pos="0 0 0" axis="0 1 0" limited="true" range="-2.7929 -0.2471" />
+                        <geom type="mesh" contype="0" conaffinity="1" group="1" mesh="lleg" />
+                    </body>
+                </body>
+            </body>
+            <body name="arm0.link_sh0" pos="0.292 0 0.188">
+                <inertial pos="-0.008399 0.000272 -0.024603" quat="0.710827 0.700855 0.0423863 -0.0416066" mass="1.9047" diaginertia="0.00891905 0.00728042 0.00492153" />
+                <joint name="arm0.sh0" pos="0 0 0" axis="0 0 1" limited="true" range="-2.61799 3.14159" frictionloss="10" />
+                <geom type="mesh" contype="1" conaffinity="1" group="1" mesh="arm0_link_sh0" />
+                <body name="arm0.link_sh1" pos="0 0 0">
+                    <inertial pos="0.0808491 -0.00167243 0.00045644" quat="-0.00467017 0.708456 0.00702831 0.705705" mass="1.85702" diaginertia="0.0281997 0.0270454 0.00260818" />
+                    <joint name="arm0.sh1" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14159 0.523599" frictionloss="10" />
+                    <geom type="mesh" contype="1" conaffinity="1" group="1" mesh="arm0_link_sh1" />
+                    <geom type="mesh" contype="1" conaffinity="1" group="1" mesh="arm0_link_hr0" />
+                    <body name="arm0.link_el0" pos="0.3385 0 0">
+                        <inertial pos="0.0447662 -0.0027113 0.0499136" quat="0.0923782 0.888458 0.19384 0.40563" mass="0.94832" diaginertia="0.00286401 0.00265579 0.000960161" />
+                        <joint name="arm0.el0" pos="0 0 0" axis="0 1 0" limited="true" range="0 3.14159" frictionloss="10" />
+                        <geom type="mesh" contype="1" conaffinity="1" group="1" mesh="arm0_link_el0" />
+                        <body name="arm0.link_el1" pos="0.4033 0 0.075">
+                            <inertial pos="-0.168671 -0.0161612 1.149e-05" quat="0.488034 0.425158 0.565043 0.511654" mass="1.01755" diaginertia="0.0169253 0.0168986 0.000746021" />
+                            <joint name="arm0.el1" pos="0 0 0" axis="1 0 0" limited="true" range="-2.79253 2.79253" frictionloss="10" />
+                            <geom type="mesh" contype="1" conaffinity="1" group="1" mesh="arm0_link_el1" />
+                            <body name="arm0.link_wr0" pos="0 0 0">
+                                <inertial pos="0.00952465 -0.0114441 1.86e-06" quat="0.308237 0.652328 -0.273781 0.636005" mass="0.582637" diaginertia="0.000536182 0.000528639 0.000388399" />
+                                <joint name="arm0.wr0" pos="0 0 0" axis="0 1 0" limited="true" range="-1.8326 1.8326" frictionloss="10" />
+                                <geom type="mesh" contype="1" conaffinity="1" group="1" mesh="arm0_link_wr0" />
+                                <body name="arm0.link_wr1" pos="0 0 0">
+                                    <inertial pos="0.0975128 9.265e-05 -0.0112052" quat="0.592778 0.385047 0.386229 0.592605" mass="0.933353" diaginertia="0.00197018 0.00182151 0.00082476" />
+                                    <joint name="arm0.wr1" pos="0 0 0" axis="1 0 0" limited="true" range="-2.87989 2.87979" frictionloss="10" />
+                                    <geom type="mesh" contype="1" conaffinity="1" group="1" mesh="arm0_link_wr1" />
+                                    <body name="arm0.link_fngr" pos="0.11745 0 0.01482">
+                                        <inertial pos="0.0356518 0.000672 -0.0122752" quat="0.00481109 0.567709 0.0124565 0.823121" mass="0.223833" diaginertia="0.000648792 0.000484516 0.000194933" />
+                                        <joint name="arm0.f1x" pos="0 0 0" axis="0 1 0" limited="true" range="-1.5708 0" frictionloss="10" />
+                                        <geom type="mesh" contype="1" conaffinity="1" group="1" mesh="arm0_link_fngr" />
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+
+  <actuator>
+    <position class="abduction" name="FR_hip" joint="fr.hx"/>
+    <position class="hip" name="FR_thigh" joint="fr.hy"/>
+    <position class="knee" name="FR_calf" joint="fr.kn"/>
+
+    <position class="abduction" name="FL_hip" joint="fl.hx"/>
+    <position class="hip" name="FL_thigh" joint="fl.hy"/>
+    <position class="knee" name="FL_calf" joint="fl.kn"/>
+    
+    <position class="abduction" name="RR_hip" joint="hr.hx"/>
+    <position class="hip" name="RR_thigh" joint="hr.hy"/>
+    <position class="knee" name="RR_calf" joint="hr.kn"/>
+    
+    <position class="abduction" name="RL_hip" joint="hl.hx"/>
+    <position class="hip" name="RL_thigh" joint="hl.hy"/>
+    <position class="knee" name="RL_calf" joint="hl.kn"/>
+
+    <motor name='arm_shoulder_1' ctrllimited="true" ctrlrange="-2 2" joint='arm0.sh0' gear="101"/> <!--range -150 150-->
+    <motor name='arm_shoulder_2' ctrllimited="true" ctrlrange="-2 2"  joint='arm0.sh1' gear="101"/>
+    <motor name='arm_elbow_1' ctrllimited="true" ctrlrange="-2 2" joint='arm0.el0' gear="101" />
+    <motor name='arm_elbow_2' ctrllimited="true" ctrlrange="-1 1"  joint='arm0.el1' gear="101"/>  <!--range -28 28-->
+    <motor name='arm_wrist_1' ctrllimited="true" ctrlrange="-1 1"  joint='arm0.wr0' gear="101"/>
+    <motor name='arm_wrist_2' ctrllimited="true" ctrlrange="-1 1"  joint='arm0.wr1' gear="101"/>
+    <motor name='arm_finger' ctrllimited="true" ctrlrange="-1 1"  joint='arm0.f1x' gear="101"/>
+
+    <!-- <general class="arm" name="actuator1" joint="arm0.sh0" gainprm="4500" biasprm="0 -4500 -450"/>
+    <general class="arm" name="actuator2" joint="arm0.sh1" gainprm="4500" biasprm="0 -4500 -450" ctrlrange="-1.7628 1.7628"/>
+    <general class="arm" name="actuator3" joint="arm0.el0" gainprm="3500" biasprm="0 -3500 -350"/>
+    <general class="arm" name="actuator4" joint="arm0.el1" gainprm="3500" biasprm="0 -3500 -350" ctrlrange="-3.0718 -0.0698"/>
+    <general class="arm" name="actuator5" joint="arm0.wr0" gainprm="2000" biasprm="0 -2000 -200" forcerange="-12 12"/>
+    <general class="arm" name="actuator6" joint="arm0.wr1" gainprm="2000" biasprm="0 -2000 -200" forcerange="-12 12" ctrlrange="-0.0175 3.7525"/>
+    <general class="arm" name="actuator7" joint="arm0.f1x" gainprm="2000" biasprm="0 -2000 -200" forcerange="-12 12"/> -->
+
+  </actuator>
+
+</mujoco>

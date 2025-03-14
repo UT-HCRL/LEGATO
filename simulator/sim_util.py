@@ -1,22 +1,45 @@
-import numpy as np
 from collections import OrderedDict
 
 import mujoco
+import numpy as np
 
-from utils import geom, liegroup
+from ..utils import geom, liegroup
 
 
 def get_sim_info(sim):
     model, data = get_mujoco_objects(sim)
     joint_info = {}
-    
+    mesh_info = {}
+
     for i in range(sim.model.njnt):
         joint_name = mujoco.mj_id2name(model, mujoco.mjtObj.mjOBJ_JOINT, i)
         joint_info[joint_name] = i
 
-    qpos = np.copy(data.qpos).tolist()
+    # get mesh info
+    for i in range(sim.model.nmesh):
+        mesh_name = mujoco.mj_id2name(model, mujoco.mjtObj.mjOBJ_MESH, i)
+        mesh_info[mesh_name] = i
 
-    return joint_info, qpos
+    init_qpos = np.copy(data.qpos).tolist()
+    
+    geom_xpos = np.copy(data.geom_xpos).tolist()
+    geom_xquat = geom.rot_to_quat(np.copy(data.geom_xmat).reshape(-1, 3, 3)).tolist()
+    geom_xpose = [geom_xpos[i] + geom_xquat[i] for i in range(len(geom_xpos))]
+
+    mesh_pos = np.copy(model.mesh_pos).tolist()
+    mesh_quat = np.array(model.mesh_quat)
+    # convert from wxyz to xyzw
+    mesh_quat = mesh_quat[:, [1, 2, 3, 0]]
+    mesh_quat = mesh_quat.tolist()
+    mesh_pose = [mesh_pos[i] + mesh_quat[i] for i in range(len(mesh_pos))]
+
+    return {
+        "joint_ids": joint_info,
+        "mesh_ids": mesh_info,
+        "init_qpos": init_qpos,
+        "init_geom_xpose": geom_xpose,
+        "mesh_pose": mesh_pose,
+    }
 
 
 def get_mujoco_objects(sim):
@@ -191,6 +214,8 @@ def set_motor_impedance(sim, robot, command, gains):
         joint_qveladr = model.jnt_dofadr[joint_id]
         joint_pos = data.qpos[joint_qposadr]
         joint_vel = data.qvel[joint_qveladr]
+        # for i in range(34):
+        #     print(mujoco.mj_id2name(model, mujoco.mjtObj.mjOBJ_ACTUATOR, i))
         if type(gains) == dict:
             kp_val = gains[joint_key][0]
             kd_val = gains[joint_key][1]
@@ -224,6 +249,7 @@ def set_angular_impedance(sim, robot, command, gains):
         else:
             kp_val = gains[0]
             kd_val = gains[1]
+        # pos_des = geom.quat_to_euler(quat_des)
         ang_error = geom.rot_to_euler(geom.quat_to_rot(quat_des) @ geom.euler_to_rot(joint_pos).T)
         data.ctrl[actuator_id+3:actuator_id+6] = trq_des + kp_val * ang_error + kd_val * (vel_des - joint_vel)
 

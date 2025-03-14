@@ -2,12 +2,12 @@
 
     <actuator>
     
-        <motor name="torque_body"       ctrllimited="true" ctrlrange="-2500 2500"  joint="root"   />
-        <motor name="torque_body_y"     ctrllimited="true" ctrlrange="-2500 2500"  joint="root_y" />
-        <motor name="torque_body_z"     ctrllimited="true" ctrlrange="-2500 2500"  joint="root_z" />
-        <motor name="torque_body_r"     ctrllimited="true" ctrlrange="-2500 2500"  joint="root_r" />
-        <motor name="torque_body_p"     ctrllimited="true" ctrlrange="-2500 2500"  joint="root_p" />
-        <motor name="torque_body_yw"    ctrllimited="true" ctrlrange="-2500 2500"  joint="root_yw"/>
+        <motor joint="root"         name="torque_body"/>
+        <motor joint="root_y"       name="torque_body_y"/>
+        <motor joint="root_z"       name="torque_body_z"/>
+        <motor joint="root_r"       name="torque_body_r"/>
+        <motor joint="root_p"       name="torque_body_p"/>
+        <motor joint="root_yw"      name="torque_body_yw"/>
 
         <motor name="torque_quad_fr_0"  ctrllimited="true" ctrlrange="-500 500"   joint="joint_quad_fr_0" />
         <motor name="torque_quad_fr_1"  ctrllimited="true" ctrlrange="-500 500"   joint="joint_quad_fr_1" />
@@ -25,16 +25,33 @@
         <motor name="torque_quad_rl_1"  ctrllimited="true" ctrlrange="-500 500"   joint="joint_quad_rl_1" />
         <motor name="torque_quad_rl_2"  ctrllimited="true" ctrlrange="-500 500"   joint="joint_quad_rl_2" />
 
-        <motor name="torque_arm_0"      ctrllimited="true" ctrlrange="-250 250"     joint="joint_arm_0"     />
+        <motor name="torque_arm_0"      ctrllimited="true" ctrlrange="-250 250"     joint="joint_arm_0"     /> <!--range -150 150-->
         <motor name="torque_arm_1"      ctrllimited="true" ctrlrange="-250 250"     joint="joint_arm_1"     />
         <motor name="torque_arm_2"      ctrllimited="true" ctrlrange="-250 250"     joint="joint_arm_2"     />
-        <motor name="torque_arm_3"      ctrllimited="true" ctrlrange="-150 150"     joint="joint_arm_3"     />
+        <motor name="torque_arm_3"      ctrllimited="true" ctrlrange="-150 150"     joint="joint_arm_3"     />  <!--range -28 28-->
         <motor name="torque_arm_4"      ctrllimited="true" ctrlrange="-150 150"     joint="joint_arm_4"     />
         <motor name="torque_arm_5"      ctrllimited="true" ctrlrange="-150 150"     joint="joint_arm_5"     />
+        <!-- <motor name="torque_gripper_0"  ctrllimited="true" ctrlrange="-10 10"     joint="joint_gripper_0" /> -->
 
     </actuator>
 
     <asset>
+        <!-- 
+        <texture name="texture_black_leg"       file="./textures/black_leg.png"    />
+        <texture name="texture_hip"             file="./textures/hip.png"          />
+        <texture name="texture_lleg"            file="./textures/lleg.png"         />
+        <texture name="texture_yellow_leg"      file="./textures/yellow_leg.png"   />
+        <texture name="texture_yellow_parts"    file="./textures/yellow_parts.png" />
+        <texture name="texture_body_others"     file="./textures/body_others.png"  />
+
+        <material name="material_yellow_leg"    texture="texture_yellow_leg"      />
+        <material name="material_black_leg"     texture="texture_black_leg"       />
+        <material name="material_lleg"          texture="texture_lleg"            />
+        <material name="material_hip"           texture="texture_hip"             />
+        <material name="material_yellow_parts"  texture="texture_yellow_parts"    />
+        <material name="material_body_others"   texture="texture_body_others"     /> 
+        -->
+
         <mesh name="spot_body"      file="meshes/spot_body.stl"      />
         <mesh name="fl_hip"         file="meshes/fl_hip.stl"         />
         <mesh name="fr_hip"         file="meshes/fr_hip.stl"         />
@@ -58,6 +75,31 @@
     <worldbody>
         <body name="floating_base" pos="0 0 0">
 
+        <!-- <body name="frame_fl_contact" pos=" 0.29785  0.165945 0.05">
+            <geom type="sphere" size="0.05" 
+                rgba="0.2 0.2 1.0 1"
+                contype="0" conaffinity="0" group="1" 
+                />
+        </body> -->
+        <!-- <body name="frame_fr_contact" pos=" 0.29785 -0.165945 0.05">
+            <geom type="sphere" size="0.05" 
+                rgba="0.2 0.2 1.0 1"
+                contype="0" conaffinity="0" group="1" 
+                />
+        </body> -->
+        <!-- <body name="frame_rl_contact" pos="-0.29785  0.165945 0.05">
+            <geom type="sphere" size="0.05" 
+                rgba="0.2 0.2 1.0 1"
+                contype="0" conaffinity="0" group="1" 
+                />
+        </body> -->
+        <!-- <body name="frame_rr_contact" pos="-0.29785 -0.165945 0.05">
+            <geom type="sphere" size="0.05" 
+                rgba="0.2 0.2 1.0 1"
+                contype="0" conaffinity="0" group="1" 
+                />
+        </body> -->
+
         <body>
             <joint armature="0" damping="0" limited="false" name="root" axis="1 0 0" stiffness="0" type="slide"/>
             <inertial pos="0 0 0" mass="1.0e-6" diaginertia="1.0e-9 1.0e-9 1.0e-9"/>
@@ -76,6 +118,8 @@
         <body name="base" pos="0 0 0">
             <inertial pos="0 0 -0.00496172" quat="0 0.707107 0 0.707107" mass="16.7077" diaginertia="0.569454 0.549231 0.0815438" />
             <joint armature="0" damping="0" limited="false" name="root_yw" axis="0 0 1" stiffness="0" type="hinge"/>
+            <!-- <joint armature="0" damping="0" limited="false" name="root_quat" stiffness="0" type="ball"/> -->
+            <!-- <joint armature="0" damping="0" limited="false" name="root" pos="0 0 0" stiffness="0" type="free"/> -->
 
             <geom type="mesh" mesh="spot_body" 
                 contype="0" conaffinity="0" group="1" 
@@ -119,12 +163,16 @@
                             contype="0" conaffinity="0" group="1" 
                             />
                         <body name="frame_fl_foot" pos="0 0 -0.33">
-                            <inertial pos="0 0 0" mass="1.0e2" diaginertia="0.0001 0.0001 0.0001" />
+                            <inertial pos="0 0 0" mass="0.1" diaginertia="0.0001 0.0001 0.0001" />
                             <geom type="sphere" size="0.05" 
                                 rgba="0 0 0 0"
-                                friction="1 1 1"
                                 group="0" contype="1" conaffinity="1"
                                 />
+                            <!-- <joint armature="0" limited="false" stiffness="0" type="ball" frictionloss="0" damping="0.0"/> -->
+                            <!-- <geom type="sphere" size="0.05" 
+                                rgba="1.0 0.2 0.2 1"
+                                contype="0" conaffinity="0" group="1" 
+                                /> -->
                         </body>
                     </body>
                 </body>
@@ -164,12 +212,16 @@
                             contype="0" conaffinity="0" group="1" 
                             />
                         <body name="frame_fr_foot" pos="0 0 -0.33">
-                            <inertial pos="0 0 0" mass="1.0e2" diaginertia="0.0001 0.0001 0.0001" />
+                            <inertial pos="0 0 0" mass="0.1" diaginertia="0.0001 0.0001 0.0001" />
                             <geom type="sphere" size="0.05" 
                                 rgba="0 0 0 0"
-                                friction="1 1 1"
                                 group="0" contype="1" conaffinity="1"
                                 />
+                            <!-- <joint armature="0" limited="false" stiffness="0" type="ball" frictionloss="0" damping="0.0"/> -->
+                            <!-- <geom type="sphere" size="0.05" 
+                                rgba="1.0 0.2 0.2 1"
+                                contype="0" conaffinity="0" group="1" 
+                                /> -->
                         </body>
                     </body>
                 </body>
@@ -209,12 +261,16 @@
                             contype="0" conaffinity="0" group="1" 
                             />
                         <body name="frame_rl_foot" pos="0 0 -0.33">
-                            <inertial pos="0 0 0" mass="1.0e2" diaginertia="0.0001 0.0001 0.0001" />
+                            <inertial pos="0 0 0" mass="0.1" diaginertia="0.0001 0.0001 0.0001" />
                             <geom type="sphere" size="0.05" 
                                 rgba="0 0 0 0"
-                                friction="1 1 1"
                                 group="0" contype="1" conaffinity="1"
                                 />
+                            <!-- <joint armature="0" limited="false" stiffness="0" type="ball" frictionloss="0" damping="0.0"/> -->
+                            <!-- <geom type="sphere" size="0.05" 
+                                rgba="1.0 0.2 0.2 1"
+                                contype="0" conaffinity="0" group="1" 
+                                /> -->
                         </body>
                     </body>
                 </body>
@@ -254,12 +310,16 @@
                             contype="0" conaffinity="0" group="1" 
                             />
                         <body name="frame_rr_foot" pos="0 0 -0.33">
-                            <inertial pos="0 0 0" mass="1.0e2" diaginertia="0.0001 0.0001 0.0001" />
+                            <inertial pos="0 0 0" mass="0.1" diaginertia="0.0001 0.0001 0.0001" />
                             <geom type="sphere" size="0.05" 
                                 rgba="0 0 0 0"
-                                friction="1 1 1"
                                 group="0" contype="1" conaffinity="1"
                                 />
+                            <!-- <joint armature="0" limited="false" stiffness="0" type="ball" frictionloss="0" damping="0.0"/> -->
+                            <!-- <geom type="sphere" size="0.05" 
+                                rgba="1.0 0.2 0.2 1"
+                                contype="0" conaffinity="0" group="1" 
+                                /> -->
                         </body>
                     </body>
                 </body>
@@ -330,22 +390,17 @@
                                         <camera mode="fixed" name="stereo_r_right_hand" pos="-0.05 0.1 0.0" quat="0 1 0 0" fovy="120"/>
                                     </body>
                                     </body>
-                                    
-                                    <body name="tool_point" pos="0.2 0.0 -0.03">
-                                        <body name="tool_mount" pos="0.0 0.0 0.0" quat="0.5 0.5 0.5 0.5"/>
-                                    </body>
-
-                                    <geom type="mesh" contype="1" conaffinity="1" group="1" mesh="arm0_link_6" />
+                                    <!-- <geom type="mesh" contype="1" conaffinity="1" group="1" mesh="arm0_link_6" />
 
                                     <body name="link_gripper_0" pos="0.11745 0 0.01482">
                                         <inertial pos="0.0356518 0.000672 -0.0122752" quat="0.00481109 0.567709 0.0124565 0.823121" mass="0.223833" diaginertia="0.000648792 0.000484516 0.000194933" />
-                                        <!-- <joint name="joint_gripper_0" 
+                                        <joint name="joint_gripper_0" 
                                             pos="0 0 0" axis="0 1 0" 
                                             type="hinge" limited="true" range="-1.5708 0" 
                                             frictionloss="0" damping="0.0"
-                                            /> -->
+                                            />
                                         <geom type="mesh" contype="1" conaffinity="1" group="1" mesh="arm0_link_fngr" />
-                                    </body>
+                                    </body> -->
                                 </body>
                             </body>
                         </body>
@@ -360,5 +415,12 @@
     </body>
     </body>
     </worldbody>
+
+    <equality>
+        <!-- <weld body1="frame_fl_foot" body2="frame_fl_contact" relpose="0 0 0 1 0 0 0"/> -->
+        <!-- <weld body1="frame_fr_foot" body2="frame_fr_contact" relpose="0 0 0 1 0 0 0"/> -->
+        <!-- <weld body1="frame_rl_foot" body2="frame_rl_contact" relpose="0 0 0 1 0 0 0"/> -->
+        <!-- <weld body1="frame_rr_foot" body2="frame_rr_contact" relpose="0 0 0 1 0 0 0"/> -->
+    </equality>
 
 </mujoco>

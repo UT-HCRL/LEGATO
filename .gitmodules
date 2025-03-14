@@ -1,0 +1,3 @@
+[submodule "external/motion_planners"]
+	path = external/motion_planners
+	url = https://github.com/caelan/motion-planners

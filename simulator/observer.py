@@ -1,6 +1,6 @@
 import copy
 from collections import OrderedDict
-import simulator.sim_util as sim_util
+from . import sim_util
 
 class JointObserver(object):
 

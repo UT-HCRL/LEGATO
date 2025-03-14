@@ -50,6 +50,8 @@
 		<mesh name="r_hand_pitch" file="./meshes/r_hand_pitch.STL"/>
 	</asset>
 	<worldbody>
+		<!-- <light directional="true" pos="-0.5 0.5 3" dir="0 0 -1" /> -->
+		<!-- <geom name="floor" pos="0 0 -3" size="0 0 0.9" type="plane" conaffinity="1" material="grid" condim="3"/> -->
 		<body name="floating_base" pos="0 0 0">
 
 		<body>
@@ -454,17 +456,11 @@
                 group="0"
                 />
 
-        <body name="left_eef_point" pos="0 0 0" quat="0.5 0.5 0.5 -0.5">
-            <body name="left_gripper_mount" quat="0.5 0.5 0.5 0.5">
-                <camera mode="fixed" name="stereo_l_left_hand" pos="0.05 0.1 0.0" quat="0 1 0 0" fovy="120"/>
-                <camera mode="fixed" name="stereo_r_left_hand" pos="-0.05 0.1 0.0" quat="0 1 0 0" fovy="120"/>
-            </body>
+        <body name="left_eef_point" pos="0 0 0" quat="0.707107 0 0 0.707107">
+            <body name="left_gripper_mount" quat="0 0 1 0"/>
             <body name="left_hand" pos="0 0 0"/>
-        </body>
-        <body name="left_tool_point" pos="0 0 0" quat="0.5 0.5 0.5 -0.5">
-            <body name="left_tool_mount" pos="0.0 0.0 0.0" quat="0.5 0.5 0.5 0.5"/>
-        </body>
 
+        </body>
         </body>
         </body>
         </body>
@@ -565,17 +561,11 @@
                 group="0"
                 />
 
-        <body name="right_eef_point" pos="0 0 0" quat="0.5 0.5 0.5 -0.5">
-            <body name="right_gripper_mount" quat="0.5 0.5 0.5 0.5">
-                <camera mode="fixed" name="stereo_l_right_hand" pos="0.05 0.1 0.0" quat="0 1 0 0" fovy="120"/>
-                <camera mode="fixed" name="stereo_r_right_hand" pos="-0.05 0.1 0.0" quat="0 1 0 0" fovy="120"/>
-            </body>
+        <body name="right_eef_point" pos="0 0 0" quat="-0.707107 0 0 0.707107">
+            <body name="right_gripper_mount" quat="0 0 1 0"/>
             <body name="right_hand" pos="0 0 0"/>
-        </body>
-        <body name="right_tool_point" pos="0 0 0" quat="0.5 0.5 0.5 -0.5">
-            <body name="right_tool_mount" pos="0.0 0.0 0.0" quat="0.5 0.5 0.5 0.5"/>
-        </body>
 
+        </body>
         </body>
         </body>
         </body>

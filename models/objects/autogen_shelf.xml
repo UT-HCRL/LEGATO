@@ -1,0 +1,22 @@
+<mujoco model="shelf">
+	<asset>
+		<texture file="../textures/light-wood.png" type="cube" name="light-wood" />
+		<material name="MatLightWood" texture="light-wood" texrepeat="3 3" specular="0.4" shininess="0.1" />
+	</asset>
+	<worldbody>
+		<body>
+			<body name="object" pos="0 0 0">
+				<body name="shelf" pos="0 0 0.5">
+					<geom type="box" size="0.75 0.4 0.02" pos="0 0 -0.48" material="MatLightWood" group="0" />
+					<geom type="box" size="0.75 0.4 0.02" pos="0 0 0.48" material="MatLightWood" group="0" />
+					<geom type="box" size="0.02 0.4 0.5" pos="-0.73 0 0" material="MatLightWood" group="0" />
+					<geom type="box" size="0.02 0.4 0.5" pos="0.73 0 0" material="MatLightWood" group="0" />
+					<geom type="box" size="0.71 0.02 0.46" pos="0 -0.38 0" material="MatLightWood" group="0" />
+					<geom type="box" size="0.71 0.38 0.01" pos="0 0.02 -0.15666666666666668" material="MatLightWood" group="0" />
+					<geom type="box" size="0.71 0.38 0.01" pos="0 0.02 0.15666666666666668" material="MatLightWood" group="0" />
+				</body>
+				<inertial pos="0 0 0" mass="10" diaginertia="0.01 0.01 0.01" />
+			</body>
+		</body>
+	</worldbody>
+</mujoco>

@@ -1,9 +1,8 @@
 import copy
 import numpy as np
 from collections import OrderedDict
-
-from utils import geom
-import simulator.sim_util as sim_util
+from ..utils import geom
+from . import sim_util
 
 
 class JointController(object):

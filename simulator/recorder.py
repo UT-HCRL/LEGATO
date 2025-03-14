@@ -53,7 +53,7 @@ class HDF5Recorder:
                                 self._command["quat"],
                                 np.array([self._command["gripper"]])]
             else:
-                self._command = {"pos": np.array([0.45, 0.0, 0.1]), 
+                self._command = {"pos": np.array([4.53075822e-01, -9.55911781e-04,  9.23204757e-01]), 
                                  "quat": np.array([0, 0, 0, 1]), 
                                  "gripper": 0.0}
             self._demo_buffer["action"].append(np.concatenate(concat_action))
