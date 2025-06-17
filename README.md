@@ -39,7 +39,7 @@ LEGATO is released under the [MIT License](LICENSE). The `flex_ik_solver` part o
 ```
 @article{seo2024legato,
     title={LEGATO: Cross-Embodiment Imitation Using a Grasping Tool},
-    author={Seo, Mingyo and Park, H. Andy and Yuan, Shenli and Zhu, Yuke and
+    author={Seo, Mingyo and Park, H. Andy and Yuan, Shenli and Zhu, Yuke
           and Sentis, Luis},
     journal={IEEE Robotics and Automation Letters (RA-L)},
     year={2025}
