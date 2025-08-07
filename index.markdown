@@ -181,14 +181,14 @@ highlight {
     <tr>
       <td align="center" valign="middle">
         <video muted autoplay loop width="798">
-          <source src="./src/video/header.mp4"  type="video/mp4">
+          <source src="./src/video/header.mp4" type="video/mp4">
         </video>
       </td>
     </tr> 
   </tbody> 
 </table>
 
-<table border="0" cellspacing="10" cellpadding="0" align="center">
+<table align=center width=800px>
   <tr>
     <td>
       <p align="justify" width="20%">
