@@ -94,9 +94,11 @@ IMG {
     margin:auto;  
   }
 #primarycontent {
-    MARGIN-LEFT: auto; ; WIDTH: expression(document.body.clientWidth >
-    1000? "1000px": "auto" ); MARGIN-RIGHT: auto; TEXT-ALIGN: left; max-width:
-    1000px 
+    MARGIN-LEFT: auto; 
+    WIDTH: expression(document.body.clientWidth > 1000? "1000px": "auto" );
+    MARGIN-RIGHT: auto;
+    TEXT-ALIGN: left;
+    max-width: 1000px; 
   }
 BODY {
     TEXT-ALIGN: center
@@ -123,7 +125,7 @@ pre {
     word-wrap: break-word;
   }
 table {
-  	width:800;
+  	width: 800px;
   }
 a {
   color: #800080;
@@ -186,7 +188,7 @@ highlight {
   </tbody> 
 </table>
 
-<div style="width: 500;">
+<div style="width: 500px;">
   <p>
     <table align=center width=800px>
       <tr>
@@ -426,7 +428,6 @@ highlight {
 <table align=center width=800px>
   <tr>
     <td>
-    <!-- <left> -->
     <pre><code style="display:block; overflow-x: auto">
       @article{seo2024legato,
         title={LEGATO: Cross-Embodiment Imitation Using a Grasping Tool},
@@ -436,7 +437,6 @@ highlight {
         year={2025}
       }
     </code></pre>
-    <!-- </left> -->
     </td>
   </tr>
 </table>
