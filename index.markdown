@@ -426,7 +426,7 @@ highlight {
     <td>
     <pre><code style="display:block; overflow-x: auto">
       @article{seo2024legato,
-        title={LEGATO: Cross-Embodiment Imitation Using a Grasping Tool},
+        title={{LEGATO}: Cross-Embodiment Imitation Using a Grasping Tool},
         author={Seo, Mingyo and Park, H. Andy and Yuan, Shenli and Zhu, Yuke
           and Sentis, Luis},
         journal={IEEE Robotics and Automation Letters (RA-L)},
